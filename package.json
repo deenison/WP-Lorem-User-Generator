@@ -1,0 +1,41 @@
+{
+  "name": "lorem-user-generator",
+  "title": "Lorem User Generator",
+  "description": "Like Lorem Ipsum, but for users. A straightforward way to add randomly generated users to your WordPress.",
+  "keywords": [
+    "wordpress", "plugin", "wordpress plugin", "lorem", "users", "members", "generator", "user generator", "random", "dummy data"
+  ],
+  "license": "GPLv3",
+  "author": {
+    "name": "Denison Martins",
+    "email": "contact@denison.me",
+    "url": "https://github.com/deenison"
+  },
+  "scripts": {
+    "dev"  : "gulp watch",
+    "build": "./build.sh"
+  },
+  "devDependencies": {
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-jslint": "^1.0.10",
+    "gulp-postcss": "^7.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-require-tasks": "^1.2.1",
+    "gulp-sass": "^3.1.0",
+    "gulp-sass-lint": "^1.3.4",
+    "gulp-sourcemaps": "^2.6.1",
+    "gulp-uglify": "^3.0.0",
+    "gulp-util": "^3.0.8",
+    "gulp-watch": "^4.3.11",
+    "gulp-wp-pot": "^2.0.6",
+    "path": "^0.12.7",
+    "run-sequence": "^2.2.0"
+  },
+  "sasslintConfig": "sass-lint.yml",
+  "bugs": {
+    "url": "https://github.com/deenison/Lorem-User-Generator/issues"
+  }
+}
