@@ -1,10 +1,9 @@
 === Lorem User Generator ===
 Contributors: deenison
 Tags: lorem, users, members, generator, user generator, random, dummy data
-Requires at least: @todo
-Tested up to: 4.8
-Requires PHP: @todo
-Stable tag: @todo
+Tested up to: 4.9
+Requires PHP: 5.6
+Stable tag: 1.0.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -32,14 +31,10 @@ You can checkout their [GitHub repository](https://github.com/RandomAPI/Randomus
 
 Absolutely! Besides the `quantity` of users to be generated, you can specify their `gender` and `nationality`.
 
-== Screenshots ==
-
-@todo
-
 == Changelog ==
 
 The format is based on [Keep a Changelog](http://keepachangelog.com) and this plugin adheres to [Semantic Versioning](http://semver.org).
 
-= 1.0.0 - @todo =
+= 1.0.0 - 2017-12-25 =
 
 - First release.

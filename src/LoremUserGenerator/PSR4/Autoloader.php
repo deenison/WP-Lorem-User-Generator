@@ -7,7 +7,6 @@ if (!defined('ABSPATH')) exit;
 /**
  * @package     LoremUserGenerator
  * @subpackage  PSR4
- * @author      Denison Martins <https://github.com/deenison>
  * @copyright   Copyright (c) 2017 Lorem User Generator
  * @license     GPL-3
  * @since       1.0.0
