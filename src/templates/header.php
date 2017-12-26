@@ -10,13 +10,14 @@ use \LoremUserGenerator\Helper;
     <tbody>
       <tr>
         <th scope="row">
-          <label for="qty"><?php echo __('Number of users', 'lorem-user-generator'); ?> *</label>
+          <label for="qty"><?php echo __('Number of users', 'lorem-user-generator'); ?> *</label></br>
+          <small><?php printf('(* %s)', __('required', 'lorem-user-generator')); ?></small>
         </th>
         <td>
-          <input type="text" id="qty" name="qty" class="o-input">
+          <input type="number" id="qty" name="qty" class="o-input" step="1" min="1" max="5000">
           <p class="description">
             <?php _e('You can generate up to 5000 users per batch.', 'lorem-user-generator'); ?><br>
-            <?php _e('Note that higher the number, the longer will take to generate your results.', 'lorem-user-generator'); ?>
+            <?php _e('Higher the number, the longer will take to generate your results.', 'lorem-user-generator'); ?>
           </p>
         </td>
       </tr>
@@ -64,5 +65,5 @@ use \LoremUserGenerator\Helper;
     </tbody>
   </table>
 
-  <button type="button" class="button button-primary" id="kluster" data-nonce="<?php echo wp_create_nonce(LUG_SLUG . '.generate_users'); ?>"><?php _e('Generate', 'lorem-user-generator'); ?></button>
+  <button type="button" class="button button-primary o-btn-submit" data-nonce="<?php echo wp_create_nonce(LUG_SLUG . '.generate_users'); ?>"><?php _e('Generate', 'lorem-user-generator'); ?></button>
 </div>

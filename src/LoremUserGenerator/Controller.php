@@ -170,7 +170,7 @@ final class Controller
                 throw new \Exception(__('Invalid nonce.', 'lorem-user-generator'));
             }
 
-            $missingParamErrorString = __('Missing "%s" parameter.', 'lorem-user-generator');
+            $missingParamErrorString = _x('Missing "%s" parameter.', '%s: parameter name', 'lorem-user-generator');
 
             $userFirstName = isset($_POST['user_fname']) ? trim((string)$_POST['user_fname']) : "";
             if (empty($userFirstName)) {
