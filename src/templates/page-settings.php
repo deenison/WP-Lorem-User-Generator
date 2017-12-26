@@ -19,6 +19,7 @@ if (!defined('ABSPATH')) exit;
             <option value="<?php echo $userRoleSlug; ?>"<?php echo $userRoleSlug === $defaultUserRole ? ' selected' : ''; ?>><?php echo esc_attr($userRole['name']); ?></option>
             <?php endforeach; ?>
           </select>
+          <p class="description"><?php _e('User role that will be pre selected on the results table when generating dummy users data.', 'lorem-user-generator'); ?></p>
         </td>
       </tr>
     </table>

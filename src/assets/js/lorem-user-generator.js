@@ -20,10 +20,23 @@
   }
 
   $(document).ready(function() {
-    $('#kluster').on('click', function(e) {
+    function disableForm(form) {
+      $('input, select', form)
+        .prop('disabled', 'disabled')
+        .addClass('disabled');
+    }
+
+    function enableForm(form) {
+      $('input, select', form)
+        .prop('disabled', null)
+        .removeClass('disabled');
+    }
+
+    $('#luser-wrapper form .o-btn-submit').on('click', function(e) {
       e.preventDefault();
 
       var self = $(this);
+      var form = $(self.parents('form').get(0));
 
       var qtyField = $('#qty');
       var dataQty = parseInt(qtyField.val());
@@ -62,6 +75,7 @@
 
           table.addClass('u-hidden');
           $('tbody', table).html('');
+          disableForm(form);
         },
         success: function(response) {
           self.text($l.LB_GENERATE);
@@ -75,6 +89,7 @@
         },
         complete: function() {
           self.removeClass('disabled');
+          enableForm(form);
         }
       });
     });

@@ -130,9 +130,9 @@ final class Plugin
      */
     public static function registerSettings()
     {
-        register_setting('lorem-user-generator', 'lorem-user-generator:default_user_role', array(
+        register_setting(LUG_SLUG, 'lorem-user-generator:default_user_role', array(
             'type'        => 'string',
-            'description' => '@todo',
+            'description' => __('User role that will be pre selected on the results table when generating dummy users data.', 'lorem-user-generator'),
             'default'     => get_option('default_role')
         ));
     }
@@ -145,19 +145,21 @@ final class Plugin
      */
     public static function enqueueScripts()
     {
-        wp_enqueue_script('luser-select2', 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/js/select2.min.js', array('jquery'), LUG_VERSION);
-        wp_enqueue_script('luser', LUG_BASE_URL . 'assets/js/lorem-user-generator.js', array('jquery'), LUG_VERSION);
-        wp_localize_script('luser', '$l', array(
-            'LB_GENERATING'                => __('Generating...', 'lorem-user-generator'),
-            'MSG_RESULTS_WILL_APPEAR_HERE' => __('Results will appear here...', 'lorem-user-generator'),
-            'LB_GENERATE'                  => __('Generate', 'lorem-user-generator'),
-            'LB_RESULTS'                   => _x('Results (%d)', '%d: Number of results', 'lorem-user-generator'),
-            'LB_ADDING'                    => __('Adding...', 'lorem-user-generator'),
-            'MSG_UNDOCUMMENTED_ERROR'      => __('Undocummented error.', 'lorem-user-generator'),
-            'LB_EDIT'                      => __('Edit'),
-            'LB_HIDE_FILTERS'              => __('Hide Advanced Filters', 'lorem-user-generator'),
-            'LB_SHOW_FILTERS'              => __('Show Advanced Filters', 'lorem-user-generator')
-        ));
+        if (self::canRunOnCurrentPage()) {
+            wp_enqueue_script('luser-select2', 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/js/select2.min.js', array('jquery'), LUG_VERSION);
+            wp_enqueue_script(LUG_SLUG, LUG_BASE_URL . 'assets/js/lorem-user-generator.js', array('jquery'), LUG_VERSION);
+            wp_localize_script(LUG_SLUG, '$l', array(
+                'LB_GENERATING'                => __('Generating...', 'lorem-user-generator'),
+                'MSG_RESULTS_WILL_APPEAR_HERE' => __('Results will appear here...', 'lorem-user-generator'),
+                'LB_GENERATE'                  => __('Generate', 'lorem-user-generator'),
+                'LB_RESULTS'                   => _x('Results (%d)', '%d: Number of results', 'lorem-user-generator'),
+                'LB_ADDING'                    => __('Adding...', 'lorem-user-generator'),
+                'MSG_UNDOCUMMENTED_ERROR'      => __('Undocummented error.', 'lorem-user-generator'),
+                'LB_EDIT'                      => __('Edit'),
+                'LB_HIDE_FILTERS'              => __('Hide Advanced Filters', 'lorem-user-generator'),
+                'LB_SHOW_FILTERS'              => __('Show Advanced Filters', 'lorem-user-generator')
+            ));
+        }
     }
 
     /**
@@ -168,7 +170,31 @@ final class Plugin
      */
     public static function enqueueStyles()
     {
-        wp_enqueue_style('luser-select2', 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/css/select2.min.css', array(), LUG_VERSION);
-        wp_enqueue_style('luser', LUG_BASE_URL . 'assets/css/lorem-user-generator.css', array('luser-select2'), LUG_VERSION);
+        if (self::canRunOnCurrentPage()) {
+            wp_enqueue_style('luser-select2', 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/css/select2.min.css', array(), LUG_VERSION);
+            wp_enqueue_style('luser', LUG_BASE_URL . 'assets/css/lorem-user-generator.css', array('luser-select2'), LUG_VERSION);
+        }
+    }
+
+    /**
+     * Check if wether the request is under the plugin scope.
+     * Used to bail methods if needed.
+     *
+     * @since   1.0.0
+     * @static
+     */
+    public static function canRunOnCurrentPage()
+    {
+        global $pagenow;
+
+        // Bail the method if user is outside the plugin scope.
+        if ($pagenow !== 'users.php'
+            || !isset($_GET['page'])
+            || $_GET['page'] !== LUG_SLUG
+        ) {
+            return false;
+        }
+
+        return true;
     }
 }

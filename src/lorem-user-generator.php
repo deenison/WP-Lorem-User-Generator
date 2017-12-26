@@ -1,10 +1,10 @@
 <?php
 /**
- * Plugin Name: _Lorem User Generator
+ * Plugin Name: Lorem User Generator
  * Description: A straightforward way to add randomly generated users to your WordPress.
  * Author: Denison Martins
  * Author URI: https://github.com/deenison
- * Version: 0.1.0
+ * Version: 1.0.0
  * Text Domain: lorem-user-generator
  * Domain Path: /languages
  */
@@ -17,7 +17,7 @@ if (!defined('ABSPATH')) exit;
  *
  * @since   1.0.0
  */
-define('LUG_VERSION', '0.1.0-r' . mt_rand(1, 99999));
+define('LUG_VERSION', '1.0.0');
 
 /**
  * Plugin slug.
