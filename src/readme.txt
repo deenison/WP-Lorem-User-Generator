@@ -9,15 +9,18 @@ License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
 Like Lorem Ipsum, but for users. A straightforward way to add randomly generated users to your WordPress.
 
+
 == Description ==
 
 Lorem User Generator uses [randomuser.me](https://randomuser.me) API to generate as many random user data as you want to your WordPress for application testing.
 It's like Lorem Ipsum, but for users.
 
+
 == Installation ==
 
 1. Upload the `lorem-user-generator` folder to the `/wp-content/plugins` directory.
 2. Go to the `Plugins` menu in WordPress and activate the plugin.
+
 
 == Frequently Asked Questions ==
 
@@ -30,6 +33,13 @@ You can checkout their [GitHub repository](https://github.com/RandomAPI/Randomus
 = Can I set up parameters for the randomized data? =
 
 Absolutely! Besides the `quantity` of users to be generated, you can specify their `gender` and `nationality`.
+
+
+== Screenshots ==
+
+1. The main plugin page
+2. The settings page
+
 
 == Changelog ==
 
