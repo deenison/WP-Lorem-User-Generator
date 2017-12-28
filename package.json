@@ -36,6 +36,7 @@
   },
   "sasslintConfig": "sass-lint.yml",
   "bugs": {
-    "url": "https://github.com/deenison/Lorem-User-Generator/issues"
-  }
+    "url": "https://github.com/deenison/WP-Lorem-User-Generator/issues"
+  },
+  "v": "1.0.0"
 }

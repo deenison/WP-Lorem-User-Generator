@@ -35,6 +35,6 @@ Absolutely! Besides the `quantity` of users to be generated, you can specify the
 
 The format is based on [Keep a Changelog](http://keepachangelog.com) and this plugin adheres to [Semantic Versioning](http://semver.org).
 
-= 1.0.0 - 2017-12-25 =
+= 1.0.0 - 2017-12-28 =
 
 - First release.
