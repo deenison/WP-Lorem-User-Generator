@@ -2,6 +2,7 @@
 /**
  * Plugin Name: Lorem User Generator
  * Description: A straightforward way to add randomly generated users to your WordPress.
+ * Plugin URI: https://github.com/deenison/wp-lorem-user-generator
  * Author: Denison Martins
  * Author URI: https://github.com/deenison
  * Version: 1.0.0
