@@ -5,7 +5,7 @@
  * Plugin URI: https://github.com/deenison/wp-lorem-user-generator
  * Author: Denison Martins
  * Author URI: https://github.com/deenison
- * Version: 1.0.0
+ * Version: 1.0.1
  * Text Domain: lorem-user-generator
  * Domain Path: /languages
  */
@@ -18,7 +18,7 @@ if (!defined('ABSPATH')) exit;
  *
  * @since   1.0.0
  */
-define('LUG_VERSION', '1.0.0');
+define('LUG_VERSION', '1.0.1');
 
 /**
  * Plugin slug.
