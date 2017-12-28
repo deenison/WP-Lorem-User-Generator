@@ -45,6 +45,11 @@ Absolutely! Besides the `quantity` of users to be generated, you can specify the
 
 The format is based on [Keep a Changelog](http://keepachangelog.com) and this plugin adheres to [Semantic Versioning](http://semver.org).
 
-= 1.0.0 - 2017-12-28 =
+= [1.0.1](https://github.com/deenison/WP-Lorem-User-Generator/releases/tag/v1.0.1) - 2017-12-28 =
+
+Added:
+- Added screenshots to readme.txt
+
+= [1.0.0](https://github.com/deenison/WP-Lorem-User-Generator/releases/tag/v1.0.0) - 2017-12-28 =
 
 - First release.
