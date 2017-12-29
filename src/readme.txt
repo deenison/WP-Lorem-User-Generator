@@ -3,7 +3,7 @@ Contributors: deenison
 Tags: lorem, users, members, generator, user generator, random, dummy data
 Tested up to: 4.9
 Requires PHP: 5.6
-Stable tag: 1.0.1
+Stable tag: 1.1.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -45,11 +45,16 @@ Absolutely! Besides the `quantity` of users to be generated, you can specify the
 
 The format is based on [Keep a Changelog](http://keepachangelog.com) and this plugin adheres to [Semantic Versioning](http://semver.org).
 
-= [1.0.1](https://github.com/deenison/WP-Lorem-User-Generator/releases/tag/v1.0.1) - 2017-12-28 =
+= [1.1.0] - 2017-12-29 =
+
+Added:
+- Added support for Portuguese (PT-BR) language
+
+= [1.0.1] - 2017-12-28 =
 
 Added:
 - Added screenshots to readme.txt
 
-= [1.0.0](https://github.com/deenison/WP-Lorem-User-Generator/releases/tag/v1.0.0) - 2017-12-28 =
+= [1.0.0] - 2017-12-28 =
 
 - First release.
