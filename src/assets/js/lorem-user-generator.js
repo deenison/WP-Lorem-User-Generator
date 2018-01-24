@@ -76,6 +76,9 @@
           table.addClass('u-hidden');
           $('tbody', table).html('');
           disableForm(form);
+
+          $('#table-actions').addClass('u-hidden');
+          $('[data-action="select_all"]', table).prop('checked', false);
         },
         success: function(response) {
           self.text($l.LB_GENERATE);
@@ -145,6 +148,8 @@
             editAnchor.html($l.LB_EDIT);
 
             controlsWrapper.html(editAnchor);
+
+            $('> td:first-child', row).html('');
           }
         },
         error: function() {
@@ -157,10 +162,13 @@
       $(this).parents('tr[data-index]').remove();
 
       var table = $('.c-rowset');
-      if ($('tbody tr', table).length === 0) {
+      var rows = $('tbody tr', table);
+      if (rows.length === 0) {
         table.addClass('u-hidden');
         $('.o-rowset-title').text('');
         $('#table-actions').addClass('u-hidden');
+      } else {
+        $('.o-rowset-title').text($l.LB_RESULTS.replace('%d', rows.length));
       }
     });
 
