@@ -125,7 +125,6 @@
           controlsWrapper.text($l.LB_ADDING);
         },
         success: function(response) {
-          console.log(response);
           if (!response.success) {
             if (!response.error) {
               console.error($l.MSG_UNDOCUMMENTED_ERROR);
