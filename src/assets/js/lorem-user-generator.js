@@ -86,6 +86,8 @@
           table.removeClass('u-hidden');
 
           $('select', table).select2();
+
+          $('#table-actions').removeClass('u-hidden');
         },
         complete: function() {
           self.removeClass('disabled');
@@ -159,6 +161,7 @@
       if ($('tbody tr', table).length === 0) {
         table.addClass('u-hidden');
         $('.o-rowset-title').text('');
+        $('#table-actions').addClass('u-hidden');
       }
     });
 
@@ -198,6 +201,32 @@
 
       self.attr('data-action', 'filters.show');
       self.text($l.LB_SHOW_FILTERS);
+    });
+
+    $('#bulk-actions').on('change', function() {
+      var self = $(this);
+      var action = self.val() || null;
+
+      if (!action) return;
+
+      var selectedItems = $('#results-wrapper table .o-table-control-cbx:checked');
+      if (selectedItems.length > 0) {
+        if (['add', 'discard'].indexOf(action) >= 0) {
+          var confirmation = confirm('Are you sure?');
+          if (!confirmation) return;
+
+          selectedItems.each(function() {
+            var row = $($(this).parents('tr[data-index]'));
+
+            var actionBtn = $('[data-action="user.'+ action +'"]', row);
+            if (actionBtn.length > 0) {
+              actionBtn.trigger('click');
+            }
+          });
+        }
+      }
+
+      self.select2('val', 0);
     });
   });
 })(

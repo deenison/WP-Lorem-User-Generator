@@ -4,6 +4,9 @@ if (!defined('ABSPATH')) exit;
 ?>
 
 <tr data-index="<?php echo $userIndex; ?>">
+  <td class="u-text-center">
+    <input type="checkbox" class="o-table-control-cbx" value="<?php echo $userIndex; ?>">
+  </td>
   <td class="u-text-center"><?php echo ++$userIndex; ?></td>
   <td class="u-text-left">
     <span data-column="first_name"><?php echo ucfirst($user->name->first); ?></span>&nbsp;<span data-column="last_name"><?php echo ucfirst($user->name->last); ?></span>
