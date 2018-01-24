@@ -15,7 +15,8 @@
       MSG_UNDOCUMMENTED_ERROR     : 'Undocummented error.',
       LB_EDIT                     : 'Edit',
       LB_HIDE_FILTERS             : 'Hide Advanced Filters',
-      LB_SHOW_FILTERS             : 'Show Advanced Filters'
+      LB_SHOW_FILTERS             : 'Show Advanced Filters',
+      MSG_ARE_YOU_SURE            : 'Are you sure?'
     };
   }
 
@@ -219,7 +220,7 @@
       var selectedItems = $('#results-wrapper table .o-table-control-cbx:checked');
       if (selectedItems.length > 0) {
         if (['add', 'discard'].indexOf(action) >= 0) {
-          var confirmation = confirm('Are you sure?');
+          var confirmation = confirm($l.MSG_ARE_YOU_SURE);
           if (!confirmation) return;
 
           selectedItems.each(function() {
