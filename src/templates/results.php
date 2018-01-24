@@ -21,7 +21,7 @@ if (!defined('ABSPATH')) exit;
     <thead>
       <tr>
         <th class="u-text-center">
-          <input type="checkbox">
+          <input type="checkbox" data-action="select_all">
         </th>
         <th class="u-text-center">#</th>
         <th class="u-text-left"><?php _e('Name'); ?></th>

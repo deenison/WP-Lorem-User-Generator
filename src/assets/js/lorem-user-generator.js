@@ -227,6 +227,14 @@
 
       self.select2('val', 0);
     });
+
+    $('#results-wrapper .c-rowset thead input[data-action="select_all"]').on('click', function() {
+      var self = $(this);
+      var table = $(self.parents('.c-rowset'));
+
+      var currentState = self.is(':checked');
+      $('> tbody td .o-table-control-cbx', table).prop('checked', currentState);
+    });
   });
 })(
   window,
