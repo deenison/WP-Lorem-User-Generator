@@ -157,7 +157,8 @@ final class Plugin
                 'MSG_UNDOCUMMENTED_ERROR'      => __('Undocummented error.', 'lorem-user-generator'),
                 'LB_EDIT'                      => __('Edit'),
                 'LB_HIDE_FILTERS'              => __('Hide Advanced Filters', 'lorem-user-generator'),
-                'LB_SHOW_FILTERS'              => __('Show Advanced Filters', 'lorem-user-generator')
+                'LB_SHOW_FILTERS'              => __('Show Advanced Filters', 'lorem-user-generator'),
+                'MSG_ARE_YOU_SURE'             => __('Are you sure?', 'lorem-user-generator')
             ));
         }
     }

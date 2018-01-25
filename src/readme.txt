@@ -3,7 +3,7 @@ Contributors: deenison
 Tags: lorem, users, members, generator, user generator, random, dummy data
 Tested up to: 4.9
 Requires PHP: 5.6
-Stable tag: 1.1.0
+Stable tag: 1.2.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -44,6 +44,11 @@ Absolutely! Besides the `quantity` of users to be generated, you can specify the
 == Changelog ==
 
 The format is based on [Keep a Changelog](http://keepachangelog.com) and this plugin adheres to [Semantic Versioning](http://semver.org).
+
+= [1.2.0] - 2018-01-24 =
+
+Added:
+- Added Bulk Actions tool on the results table
 
 = [1.1.0] - 2017-12-29 =
 
