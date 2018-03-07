@@ -72,7 +72,7 @@
         beforeSend: function() {
           self.text($l.LB_GENERATING);
           self.addClass('disabled');
-          resultsTitle.text($l.MSG_RESULTS_WILL_APPEAR_HERE);
+          resultsTitle.text($l.MSG_RESULTS_WILL_APPEAR_HERE).show();
 
           table.addClass('u-hidden');
           $('tbody', table).html('');
@@ -84,14 +84,20 @@
         success: function(response) {
           self.text($l.LB_GENERATE);
 
-          resultsTitle.text($l.LB_RESULTS.replace('%d', response.results_count));
+          if (response.success) {
+            resultsTitle.text($l.LB_RESULTS.replace('%d', response.results_count));
 
-          $('tbody', table).html($(response.data));
-          table.removeClass('u-hidden');
+            $('tbody', table).html($(response.data));
+            table.removeClass('u-hidden');
 
-          $('select', table).select2();
+            $('select', table).select2();
 
-          $('#table-actions').removeClass('u-hidden');
+            $('#table-actions').removeClass('u-hidden');
+          } else {
+            resultsTitle.hide();
+
+            alert(response.error);
+          }
         },
         complete: function() {
           self.removeClass('disabled');

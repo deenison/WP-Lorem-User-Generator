@@ -45,6 +45,11 @@ Absolutely! Besides the `quantity` of users to be generated, you can specify the
 
 The format is based on [Keep a Changelog](http://keepachangelog.com) and this plugin adheres to [Semantic Versioning](http://semver.org).
 
+= [@todo: WIP] =
+
+Changed:
+- Better AJAX errors handling
+
 = [1.2.0] - 2018-01-24 =
 
 Added:
