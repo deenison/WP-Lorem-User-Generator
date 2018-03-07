@@ -47,6 +47,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com) and this pl
 
 = [@todo: WIP] =
 
+Added:
+- Added a new Role filter so users can pick one WordPress User Role to be preselected on all generated users
+
 Changed:
 - Better AJAX errors handling
 

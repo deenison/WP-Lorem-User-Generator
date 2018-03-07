@@ -111,21 +111,24 @@ final class Controller
                 unset($iso, $nationalities, $nationalitiesPool);
             }
 
+            $role = isset($_GET['role']) ? trim($_GET['role']) : '';
+            $usersRoles = Helper::getUsersRoles();
+            if (!isset($usersRoles[$role])) {
+                throw new Exception(__('Invalid user role.', 'lorem-user-generator'));
+            }
+
             $data = Helper::fetchDataFromApi($params);
             $data = isset($data->results) ? $data->results : array();
 
             $dataHTML = "";
 
             if (count($data) > 0) {
-                $usersRoles = Helper::getUsersRoles();
-                $defaultUserRole = get_option('lorem-user-generator:default_user_role');
-
                 foreach ($data as $userIndex => $user) {
                     $dataHTML .= View::render('result-row', array(
                         'user'            => $user,
                         'userIndex'       => $userIndex,
                         'usersRoles'      => $usersRoles,
-                        'defaultUserRole' => $defaultUserRole
+                        'defaultUserRole' => $role
                     ), true);
                 }
             }

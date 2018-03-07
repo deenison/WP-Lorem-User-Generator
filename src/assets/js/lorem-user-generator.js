@@ -55,6 +55,7 @@
 
       var dataSeed = ($('#seed').val() || "").trim();
       var dataNationalities = $('#nationalities').val() || [];
+      var dataRole = $('#role').val() || '';
       var table = $('.c-rowset');
       var resultsTitle = $('.o-rowset-title');
 
@@ -67,7 +68,8 @@
           qty   : dataQty,
           gender: dataGender,
           seed  : dataSeed,
-          nat   : dataNationalities.join(',')
+          nat   : dataNationalities.join(','),
+          role  : dataRole
         },
         beforeSend: function() {
           self.text($l.LB_GENERATING);

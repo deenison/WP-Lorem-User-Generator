@@ -3,6 +3,9 @@
 if (!defined('ABSPATH')) exit;
 
 use \LoremUserGenerator\Helper;
+
+$usersRoles = Helper::getUsersRoles();
+$defaultUserRole = get_option('lorem-user-generator:default_user_role');
 ?>
 
 <div>
@@ -60,6 +63,19 @@ use \LoremUserGenerator\Helper;
             <?php endforeach; ?>
           </select>
           <p class="description"><?php _e('Specify what nationalities you would like the users set to belongs to.', 'lorem-user-generator'); ?></p>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">
+          <label><?php _e('Role'); ?></label>
+        </th>
+        <td>
+          <select id="role" name="role">
+            <?php foreach ($usersRoles as $userRoleSlug => $userRole): ?>
+            <option value="<?php echo $userRoleSlug; ?>"<?php echo $userRoleSlug === $defaultUserRole ? ' selected' : ''; ?>><?php echo esc_attr($userRole['name']); ?></option>
+            <?php endforeach; ?>
+          </select>
+          <p class="description"><?php _e('Pick one WordPress User Role to be preselected on all generated users.', 'lorem-user-generator'); ?></p>
         </td>
       </tr>
     </tbody>
