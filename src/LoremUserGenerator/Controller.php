@@ -38,7 +38,7 @@ final class Controller
     public static function renderSettingsPage()
     {
         View::render('page-settings', array(
-            'defaultUserRole' => get_option('lorem-user-generator:default_user_role'),
+            'defaultUserRole' => Helper::getDefaultUserRole(),
             'usersRoles'      => Helper::getUsersRoles()
         ));
     }

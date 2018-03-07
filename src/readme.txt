@@ -52,6 +52,7 @@ Added:
 
 Changed:
 - Better AJAX errors handling
+- Minor code enhancements
 
 = [1.2.0] - 2018-01-24 =
 

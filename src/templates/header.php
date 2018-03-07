@@ -5,7 +5,7 @@ if (!defined('ABSPATH')) exit;
 use \LoremUserGenerator\Helper;
 
 $usersRoles = Helper::getUsersRoles();
-$defaultUserRole = get_option('lorem-user-generator:default_user_role');
+$defaultUserRole = Helper::getDefaultUserRole();
 ?>
 
 <div>
