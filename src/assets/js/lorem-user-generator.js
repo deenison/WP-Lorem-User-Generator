@@ -59,17 +59,20 @@
       var table = $('.c-rowset');
       var resultsTitle = $('.o-rowset-title');
 
+      var skipUsersReview = $('#skip_review').is(':checked') ? 1 : 0;
+
       $.ajax({
         type: 'GET',
         url : ajaxurl,
         data: {
-          action: 'luser:generate_users',
-          nonce : $(this).data('nonce'),
-          qty   : dataQty,
-          gender: dataGender,
-          seed  : dataSeed,
-          nat   : dataNationalities.join(','),
-          role  : dataRole
+          action     : 'luser:generate_users',
+          nonce      : self.data('nonce'),
+          qty        : dataQty,
+          gender     : dataGender,
+          seed       : dataSeed,
+          nat        : dataNationalities.join(','),
+          role       : dataRole,
+          skip_review: skipUsersReview
         },
         beforeSend: function() {
           self.text($l.LB_GENERATING);

@@ -65,7 +65,7 @@ final class Controller
                 || !DOING_AJAX
                 || empty($_GET)
                 || !isset($_GET['nonce'])
-                || !wp_verify_nonce($_GET['nonce'], LUG_SLUG . '.generate_users')
+                || !check_ajax_referer(LUG_SLUG . '.generate_users', 'nonce', false)
             ) {
                 throw new \Exception(__('Invalid request.', 'lorem-user-generator'));
             }
@@ -169,7 +169,7 @@ final class Controller
             }
 
             $userIndex = isset($_POST['i']) && is_numeric($_POST['i']) ? (int)$_POST['i'] : -1;
-            if (!wp_verify_nonce($_POST['nonce'], LUG_SLUG . ':nonce.add_user:' . $userIndex)) {
+            if (!check_ajax_referer(LUG_SLUG . ':nonce.add_user:' . $userIndex, 'nonce', false)) {
                 throw new \Exception(__('Invalid nonce.', 'lorem-user-generator'));
             }
 
