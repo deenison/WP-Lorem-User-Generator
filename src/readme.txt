@@ -49,6 +49,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com) and this pl
 
 Added:
 - Added a new Role filter so users can pick one WordPress User Role to be preselected on all generated users
+- Added option to add users automatically right after they were generated
 
 Changed:
 - Better AJAX errors handling

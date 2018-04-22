@@ -80,6 +80,18 @@ $defaultUserRole = Helper::getDefaultUserRole();
       </tr>
     </tbody>
   </table>
-
-  <button type="button" class="button button-primary o-btn-submit" data-nonce="<?php echo wp_create_nonce(LUG_SLUG . '.generate_users'); ?>"><?php _e('Generate', 'lorem-user-generator'); ?></button>
+  <table class="form-table">
+    <tbody>
+      <tr>
+        <th scope="row">
+          <button type="button" class="button button-primary o-btn-submit" data-action="generate" data-nonce="<?php echo wp_create_nonce(LUG_SLUG . '.generate_users'); ?>"><?php _e('Generate', 'lorem-user-generator'); ?></button>
+        </th>
+        <td>
+          <label>
+            <input id="skip_review" type="checkbox" name="skip_review" value="1"> <?php _e('Skip users review and add them all automatically.', 'upstream'); ?>
+          </label>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
