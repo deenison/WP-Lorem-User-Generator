@@ -18,7 +18,7 @@ if (!defined('ABSPATH')) exit;
  *
  * @since   1.0.0
  */
-define('LUG_VERSION', '1.2.0');
+define('LUG_VERSION', '1.3.0');
 
 /**
  * Plugin slug.

@@ -3,7 +3,7 @@ Contributors: deenison
 Tags: lorem, users, members, generator, user generator, random, dummy data
 Tested up to: 4.9
 Requires PHP: 5.6
-Stable tag: 1.2.0
+Stable tag: 1.3.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -45,7 +45,7 @@ Absolutely! Besides the `quantity` of users to be generated, you can specify the
 
 The format is based on [Keep a Changelog](http://keepachangelog.com) and this plugin adheres to [Semantic Versioning](http://semver.org).
 
-= [@todo: WIP] =
+= [1.3.0] - 2018-04-23 =
 
 Added:
 - Added a new Role filter so users can pick one WordPress User Role to be preselected on all generated users
