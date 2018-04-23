@@ -55,6 +55,9 @@ Changed:
 - Better AJAX errors handling
 - Minor code enhancements
 
+Fixed:
+- Fixed a couple of PHP warnings thrown under some PHP >= 7 envs
+
 = [1.2.0] - 2018-01-24 =
 
 Added:

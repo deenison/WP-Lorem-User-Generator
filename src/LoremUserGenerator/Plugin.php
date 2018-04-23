@@ -53,7 +53,7 @@ final class Plugin
             return;
         }
 
-        self::$namespace = get_class(self::$instance);
+        self::$namespace = __NAMESPACE__ . '\Plugin';
         self::$controllerNamespace = LUG_NAMESPACE . 'Controller';
 
         $this->loadLanguageDomain();
