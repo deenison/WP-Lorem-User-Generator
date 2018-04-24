@@ -148,7 +148,7 @@ final class Plugin
         if (self::canRunOnCurrentPage()) {
             wp_enqueue_script('luser-select2', 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/js/select2.min.js', array('jquery'), LUG_VERSION);
             wp_enqueue_script(LUG_SLUG, LUG_BASE_URL . 'assets/js/lorem-user-generator.js', array('jquery'), LUG_VERSION);
-            wp_localize_script(LUG_SLUG, '$l', array(
+            wp_localize_script(LUG_SLUG, '$i18n', array(
                 'LB_GENERATING'                => __('Generating...', 'lorem-user-generator'),
                 'MSG_RESULTS_WILL_APPEAR_HERE' => __('Results will appear here...', 'lorem-user-generator'),
                 'LB_GENERATE'                  => __('Generate', 'lorem-user-generator'),
