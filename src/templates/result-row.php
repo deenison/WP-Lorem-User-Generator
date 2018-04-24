@@ -7,7 +7,9 @@ $userId = isset($userId) && (int)$userId > 0 ? (int)$userId : 0;
 
 <tr data-index="<?php echo $userIndex; ?>">
   <td class="u-text-center">
+    <?php if ($userId <= 0): ?>
     <input type="checkbox" class="o-table-control-cbx" value="<?php echo $userIndex; ?>">
+    <?php endif; ?>
   </td>
   <td class="u-text-center"><?php echo ++$userIndex; ?></td>
   <td class="u-text-left">
