@@ -155,4 +155,19 @@ final class Helper
 
         return apply_filters('lorem-user-generator:fetchDataFromApi', $response);
     }
+
+    /**
+     * Retrieve the default user role's alias.
+     *
+     * @since   @todo
+     * @static
+     *
+     * @return  string
+     */
+    public static function getDefaultUserRole()
+    {
+        $defaultUserRole = get_option('lorem-user-generator:default_user_role');
+
+        return $defaultUserRole;
+    }
 }

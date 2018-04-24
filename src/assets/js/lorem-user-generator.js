@@ -1,12 +1,12 @@
-(function(window, document, $, $l, undefined) {
+(function(window, document, $, $i18n, undefined) {
   if (!$) {
     return console.error('jQuery not found.');
   }
 
-  if (!$l) {
+  if (!$i18n) {
     console.warn('Language object not found. Using English instead.');
 
-    $l = {
+    $i18n = {
       LB_GENERATING               : 'Generating...',
       MSG_RESULTS_WILL_APPEAR_HERE: 'Results will appear here...',
       LB_GENERATE                 : 'Generate',
@@ -55,24 +55,29 @@
 
       var dataSeed = ($('#seed').val() || "").trim();
       var dataNationalities = $('#nationalities').val() || [];
+      var dataRole = $('#role').val() || '';
       var table = $('.c-rowset');
       var resultsTitle = $('.o-rowset-title');
+
+      var skipUsersReview = $('#skip_review').is(':checked') ? 1 : 0;
 
       $.ajax({
         type: 'GET',
         url : ajaxurl,
         data: {
-          action: 'luser:generate_users',
-          nonce : $(this).data('nonce'),
-          qty   : dataQty,
-          gender: dataGender,
-          seed  : dataSeed,
-          nat   : dataNationalities.join(',')
+          action     : 'luser:generate_users',
+          nonce      : self.data('nonce'),
+          qty        : dataQty,
+          gender     : dataGender,
+          seed       : dataSeed,
+          nat        : dataNationalities.join(','),
+          role       : dataRole,
+          skip_review: skipUsersReview
         },
         beforeSend: function() {
-          self.text($l.LB_GENERATING);
+          self.text($i18n.LB_GENERATING);
           self.addClass('disabled');
-          resultsTitle.text($l.MSG_RESULTS_WILL_APPEAR_HERE);
+          resultsTitle.text($i18n.MSG_RESULTS_WILL_APPEAR_HERE).show();
 
           table.addClass('u-hidden');
           $('tbody', table).html('');
@@ -82,16 +87,25 @@
           $('[data-action="select_all"]', table).prop('checked', false);
         },
         success: function(response) {
-          self.text($l.LB_GENERATE);
+          self.text($i18n.LB_GENERATE);
 
-          resultsTitle.text($l.LB_RESULTS.replace('%d', response.results_count));
+          if (response.success) {
+            resultsTitle.text($i18n.LB_RESULTS.replace('%d', response.results_count));
 
-          $('tbody', table).html($(response.data));
-          table.removeClass('u-hidden');
+            $('tbody', table).html($(response.data));
+            table.removeClass('u-hidden');
 
-          $('select', table).select2();
+            $('select', table).select2();
 
-          $('#table-actions').removeClass('u-hidden');
+            $('#table-actions').removeClass('u-hidden');
+          } else {
+            resultsTitle.hide();
+
+            alert(response.error);
+          }
+        },
+        error: function(request, textStatus, err) {
+          alert(err);
         },
         complete: function() {
           self.removeClass('disabled');
@@ -126,12 +140,12 @@
           user_role : selectedUserRoleValue
         },
         beforeSend: function() {
-          controlsWrapper.text($l.LB_ADDING);
+          controlsWrapper.text($i18n.LB_ADDING);
         },
         success: function(response) {
           if (!response.success) {
             if (!response.error) {
-              console.error($l.MSG_UNDOCUMMENTED_ERROR);
+              console.error($i18n.MSG_UNDOCUMMENTED_ERROR);
             } else {
               console.error(response.error);
             }
@@ -146,7 +160,7 @@
               href  : response.user_profile_url
             });
 
-            editAnchor.html($l.LB_EDIT);
+            editAnchor.html($i18n.LB_EDIT);
 
             controlsWrapper.html(editAnchor);
 
@@ -169,7 +183,7 @@
         $('.o-rowset-title').text('');
         $('#table-actions').addClass('u-hidden');
       } else {
-        $('.o-rowset-title').text($l.LB_RESULTS.replace('%d', rows.length));
+        $('.o-rowset-title').text($i18n.LB_RESULTS.replace('%d', rows.length));
       }
     });
 
@@ -195,7 +209,7 @@
       filtersWrapper.addClass('s-expanded');
 
       self.attr('data-action', 'filters.hide');
-      self.text($l.LB_HIDE_FILTERS);
+      self.text($i18n.LB_HIDE_FILTERS);
     });
 
     $('#luser-wrapper').on('click', '[data-action="filters.hide"]', function(e) {
@@ -208,7 +222,7 @@
       filtersWrapper.removeClass('s-expanded');
 
       self.attr('data-action', 'filters.show');
-      self.text($l.LB_SHOW_FILTERS);
+      self.text($i18n.LB_SHOW_FILTERS);
     });
 
     $('#bulk-actions').on('change', function() {
@@ -220,7 +234,7 @@
       var selectedItems = $('#results-wrapper table .o-table-control-cbx:checked');
       if (selectedItems.length > 0) {
         if (['add', 'discard'].indexOf(action) >= 0) {
-          var confirmation = confirm($l.MSG_ARE_YOU_SURE);
+          var confirmation = confirm($i18n.MSG_ARE_YOU_SURE);
           if (!confirmation) return;
 
           selectedItems.each(function() {
@@ -249,5 +263,5 @@
   window,
   window.document,
   typeof jQuery !== 'undefined' ? jQuery : null,
-  typeof $l !== 'undefined' ? $l : null
+  typeof $i18n !== 'undefined' ? $i18n : null
 );

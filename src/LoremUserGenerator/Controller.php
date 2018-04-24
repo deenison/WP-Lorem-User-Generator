@@ -38,7 +38,7 @@ final class Controller
     public static function renderSettingsPage()
     {
         View::render('page-settings', array(
-            'defaultUserRole' => get_option('lorem-user-generator:default_user_role'),
+            'defaultUserRole' => Helper::getDefaultUserRole(),
             'usersRoles'      => Helper::getUsersRoles()
         ));
     }
@@ -65,7 +65,7 @@ final class Controller
                 || !DOING_AJAX
                 || empty($_GET)
                 || !isset($_GET['nonce'])
-                || !wp_verify_nonce($_GET['nonce'], LUG_SLUG . '.generate_users')
+                || !check_ajax_referer(LUG_SLUG . '.generate_users', 'nonce', false)
             ) {
                 throw new \Exception(__('Invalid request.', 'lorem-user-generator'));
             }
@@ -111,22 +111,50 @@ final class Controller
                 unset($iso, $nationalities, $nationalitiesPool);
             }
 
+            $role = isset($_GET['role']) ? trim($_GET['role']) : '';
+            $usersRoles = Helper::getUsersRoles();
+            if (!isset($usersRoles[$role])) {
+                throw new Exception(__('Invalid user role.', 'lorem-user-generator'));
+            }
+
             $data = Helper::fetchDataFromApi($params);
             $data = isset($data->results) ? $data->results : array();
 
             $dataHTML = "";
 
             if (count($data) > 0) {
-                $usersRoles = Helper::getUsersRoles();
-                $defaultUserRole = get_option('lorem-user-generator:default_user_role');
+                $skipUsersReview = isset($_GET['skip_review']) && is_numeric($_GET['skip_review']) ? (bool)$_GET['skip_review'] : false;
 
-                foreach ($data as $userIndex => $user) {
-                    $dataHTML .= View::render('result-row', array(
-                        'user'            => $user,
-                        'userIndex'       => $userIndex,
-                        'usersRoles'      => $usersRoles,
-                        'defaultUserRole' => $defaultUserRole
-                    ), true);
+                if ($skipUsersReview) {
+                    foreach ($data as $userIndex => $user) {
+                        $userData = array(
+                            'fname' => $user->name->first,
+                            'lname' => $user->name->last,
+                            'email' => $user->email,
+                            'uname' => $user->login->username,
+                            'pwd'   => $user->login->password,
+                            'role'  => $role
+                        );
+
+                        $userId = self::insertUserToDb($userData, $usersRoles);
+
+                        $dataHTML .= View::render('result-row', array(
+                            'user'            => $user,
+                            'userIndex'       => $userIndex,
+                            'usersRoles'      => $usersRoles,
+                            'defaultUserRole' => $role,
+                            'userId'          => $userId
+                        ), true);
+                    }
+                } else {
+                    foreach ($data as $userIndex => $user) {
+                        $dataHTML .= View::render('result-row', array(
+                            'user'            => $user,
+                            'userIndex'       => $userIndex,
+                            'usersRoles'      => $usersRoles,
+                            'defaultUserRole' => $role
+                        ), true);
+                    }
                 }
             }
 
@@ -166,61 +194,25 @@ final class Controller
             }
 
             $userIndex = isset($_POST['i']) && is_numeric($_POST['i']) ? (int)$_POST['i'] : -1;
-            if (!wp_verify_nonce($_POST['nonce'], LUG_SLUG . ':nonce.add_user:' . $userIndex)) {
+            if (!check_ajax_referer(LUG_SLUG . ':nonce.add_user:' . $userIndex, 'nonce', false)) {
                 throw new \Exception(__('Invalid nonce.', 'lorem-user-generator'));
             }
 
-            $missingParamErrorString = _x('Missing "%s" parameter.', '%s: parameter name', 'lorem-user-generator');
+            $userData = array(
+                'fname' => isset($_POST['user_fname']) ? trim((string)$_POST['user_fname']) : '',
+                'lname' => isset($_POST['user_lname']) ? trim((string)$_POST['user_lname']) : '',
+                'email' => isset($_POST['user_email']) ? trim((string)$_POST['user_email']) : '',
+                'uname' => isset($_POST['user_uname']) ? trim((string)$_POST['user_uname']) : '',
+                'pwd'   => isset($_POST['user_pwd']) ? trim((string)$_POST['user_pwd']) : '',
+                'role'  => isset($_POST['user_role']) ? trim((string)$_POST['user_role']) : ''
+            );
 
-            $userFirstName = isset($_POST['user_fname']) ? trim((string)$_POST['user_fname']) : "";
-            if (empty($userFirstName)) {
-                throw new \Exception(sprintf($missingParamErrorString, 'user_fname'));
+            $userId = self::insertUserToDb($userData);
+            if (is_string($userId)) {
+                throw new Exception($userId);
             }
 
-            $userLastName = isset($_POST['user_lname']) ? trim((string)$_POST['user_lname']) : "";
-            if (empty($userLastName)) {
-                throw new \Exception(sprintf($missingParamErrorString, 'user_lname'));
-            }
-
-            $userEmail = isset($_POST['user_email']) ? trim((string)$_POST['user_email']) : "";
-            if (empty($userEmail)) {
-                throw new \Exception(sprintf($missingParamErrorString, 'user_email'));
-            }
-
-            $userUsername = isset($_POST['user_uname']) ? trim((string)$_POST['user_uname']) : "";
-            if (empty($userUsername)) {
-                throw new \Exception(sprintf($missingParamErrorString, 'user_uname'));
-            }
-
-            $userPassword = isset($_POST['user_pwd']) ? (string)$_POST['user_pwd'] : "";
-            if (empty($userPassword)) {
-                throw new \Exception(sprintf($missingParamErrorString, 'user_pwd'));
-            }
-
-            $userRole = isset($_POST['user_role']) ? trim((string)$_POST['user_role']) : "";
-            $usersRoles = Helper::getUsersRoles();
-            if (!isset($usersRoles[$userRole])) {
-                throw new \Exception(sprintf(__('Invalid "%s" parameter.', 'lorem-user-generator'), 'user_role'));
-            }
-
-            $userData = apply_filters('lorem-user-generator:onBeforeAddUser', array(
-                'user_login'    => $userUsername,
-                'user_pass'     => $userPassword,
-                'user_nicename' => $userUsername,
-                'user_email'    => $userEmail,
-                'display_name'  => $userFirstName . ' ' . $userLastName,
-                'nickname'      => $userUsername,
-                'first_name'    => $userFirstName,
-                'last_name'     => $userLastName,
-                'role'          => $userRole
-            ));
-
-            $userId = wp_insert_user($userData);
-            if (is_wp_error($userId)) {
-                throw new \Exception($userId->get_error_message());
-            }
-
-            $response['user_role'] = $userRole;
+            $response['user_role'] = $userData['role'];
             $response['user_profile_url'] = admin_url('user-edit.php?user_id=' . $userId);
 
             $response['success'] = true;
@@ -229,5 +221,65 @@ final class Controller
         }
 
         wp_send_json($response);
+    }
+
+    /**
+     * Add a set of user data into DB as a new user.
+     *
+     * @since   @todo
+     * @access  private
+     * @static
+     *
+     * @param   mixed   $data       Can be either plain object or array.
+     * @param   array   $userRoles  Array of available user roles.
+     *
+     * @return  The new user id in case of success. Error string otherwise.
+     */
+    private static function insertUserToDb($data, $userRoles = array())
+    {
+        $data = json_decode(json_encode((array)$data));
+
+        if (empty($userRoles)) {
+            $userRoles = Helper::getUsersRoles();
+        }
+
+        $badParamErrTmpl = _x('Missing/invalid "%s" parameter.', '%s: parameter name', 'lorem-user-generator');
+
+        $userData = array();
+
+        $requiredColumns = array('fname', 'lname', 'email', 'uname', 'pwd', 'role');
+        foreach ($requiredColumns as $columnName) {
+            $columnValue = isset($data->{$columnName}) ? trim((string)$data->{$columnName}) : '';
+            if (empty($columnValue)) {
+                throw new \Exception(sprintf($badParamErrTmpl, $columnName));
+            }
+
+            $data->{$columnName} = $columnValue;
+        }
+
+        if (!isset($userRoles[$data->role])) {
+            throw new \Exception(sprintf($badParamErrTmpl, 'role'));
+        }
+
+        $userData = apply_filters('lorem-user-generator:onBeforeAddUser', array(
+            'user_login'    => $data->uname,
+            'user_pass'     => $data->pwd,
+            'user_nicename' => $data->uname,
+            'user_email'    => $data->email,
+            'display_name'  => $data->fname . ' ' . $data->lname,
+            'nickname'      => $data->uname,
+            'first_name'    => $data->fname,
+            'last_name'     => $data->lname,
+            'role'          => $data->role
+        ));
+
+        unset($columnName, $requiredColumns, $data);
+
+        $userId = wp_insert_user($userData);
+        if (is_wp_error($userId)) {
+            throw new \Exception($userId->get_error_message());
+        }
+
+        return $userId;
     }
 }

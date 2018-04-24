@@ -3,6 +3,9 @@
 if (!defined('ABSPATH')) exit;
 
 use \LoremUserGenerator\Helper;
+
+$usersRoles = Helper::getUsersRoles();
+$defaultUserRole = Helper::getDefaultUserRole();
 ?>
 
 <div>
@@ -62,8 +65,33 @@ use \LoremUserGenerator\Helper;
           <p class="description"><?php _e('Specify what nationalities you would like the users set to belongs to.', 'lorem-user-generator'); ?></p>
         </td>
       </tr>
+      <tr>
+        <th scope="row">
+          <label><?php _e('Role'); ?></label>
+        </th>
+        <td>
+          <select id="role" name="role">
+            <?php foreach ($usersRoles as $userRoleSlug => $userRole): ?>
+            <option value="<?php echo $userRoleSlug; ?>"<?php echo $userRoleSlug === $defaultUserRole ? ' selected' : ''; ?>><?php echo esc_attr($userRole['name']); ?></option>
+            <?php endforeach; ?>
+          </select>
+          <p class="description"><?php _e('Pick one WordPress User Role to be preselected on all generated users.', 'lorem-user-generator'); ?></p>
+        </td>
+      </tr>
     </tbody>
   </table>
-
-  <button type="button" class="button button-primary o-btn-submit" data-nonce="<?php echo wp_create_nonce(LUG_SLUG . '.generate_users'); ?>"><?php _e('Generate', 'lorem-user-generator'); ?></button>
+  <table class="form-table">
+    <tbody>
+      <tr>
+        <th scope="row">
+          <button type="button" class="button button-primary o-btn-submit" data-action="generate" data-nonce="<?php echo wp_create_nonce(LUG_SLUG . '.generate_users'); ?>"><?php _e('Generate', 'lorem-user-generator'); ?></button>
+        </th>
+        <td>
+          <label>
+            <input id="skip_review" type="checkbox" name="skip_review" value="1"> <?php _e('Skip users review and add them all automatically', 'lorem-user-generator'); ?>
+          </label>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>

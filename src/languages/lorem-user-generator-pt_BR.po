@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Lorem User Generator package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Lorem User Generator v1.2.0\n"
+"Project-Id-Version: Lorem User Generator v1.3.0\n"
 "Report-Msgid-Bugs-To: https://github.com/deenison/WP-Lorem-User-Generator/"
 "issues\n"
 "POT-Creation-Date: \n"
@@ -17,24 +17,27 @@ msgstr ""
 "X-Generator: Poedit 2.0.6\n"
 
 #: src/LoremUserGenerator/Controller.php:70,
-#: src/LoremUserGenerator/Controller.php:165
+#: src/LoremUserGenerator/Controller.php:193
 msgid "Invalid request."
 msgstr "Requisição inválida."
 
 #: src/LoremUserGenerator/Controller.php:75,
-#: src/LoremUserGenerator/Controller.php:203,
 #: src/LoremUserGenerator/Helper.php:117
 msgid "Invalid \"%s\" parameter."
 msgstr "Parâmetro “%s” inválido."
 
-#: src/LoremUserGenerator/Controller.php:170
+#: src/LoremUserGenerator/Controller.php:117
+msgid "Invalid user role."
+msgstr "Função de usuário inválida."
+
+#: src/LoremUserGenerator/Controller.php:198
 msgid "Invalid nonce."
 msgstr "Nonce inválido."
 
-#: src/LoremUserGenerator/Controller.php:173
+#: src/LoremUserGenerator/Controller.php:246
 msgctxt "%s: parameter name"
-msgid "Missing \"%s\" parameter."
-msgstr "Parâmetro “%s” não encontrado."
+msgid "Missing/invalid \"%s\" parameter."
+msgstr "Parâmetro “%s” não encontrado ou inválido."
 
 #: src/LoremUserGenerator/Helper.php:148
 msgid "There was some error retrieving the response body."
@@ -68,7 +71,7 @@ msgstr "Gerando…"
 msgid "Results will appear here..."
 msgstr "Os resultados aparecerão aqui…"
 
-#: src/LoremUserGenerator/Plugin.php:154, src/templates/header.php:68
+#: src/LoremUserGenerator/Plugin.php:154, src/templates/header.php:87
 msgid "Generate"
 msgstr "Gerar"
 
@@ -89,7 +92,7 @@ msgstr "Erro não documentado."
 msgid "Hide Advanced Filters"
 msgstr "Esconder Filtros Avançados"
 
-#: src/LoremUserGenerator/Plugin.php:160, src/templates/header.php:26
+#: src/LoremUserGenerator/Plugin.php:160, src/templates/header.php:29
 msgid "Show Advanced Filters"
 msgstr "Mostrar Filtros Avançados"
 
@@ -97,40 +100,40 @@ msgstr "Mostrar Filtros Avançados"
 msgid "Are you sure?"
 msgstr "Você tem certeza?"
 
-#: src/templates/header.php:13
+#: src/templates/header.php:16
 msgid "Number of users"
 msgstr "Número de usuários"
 
-#: src/templates/header.php:14
+#: src/templates/header.php:17
 msgid "required"
 msgstr "obrigatório"
 
-#: src/templates/header.php:19
+#: src/templates/header.php:22
 msgid "You can generate up to 5000 users per batch."
 msgstr "Você gerar até 5000 usuários por requisição."
 
-#: src/templates/header.php:20
+#: src/templates/header.php:23
 msgid "Higher the number, the longer will take to generate your results."
 msgstr ""
 "Quanto maior for o número, mais tempo levará para gerar os seus resultados."
 
-#: src/templates/header.php:31
+#: src/templates/header.php:34
 msgid "Gender"
 msgstr "Gênero"
 
-#: src/templates/header.php:35
+#: src/templates/header.php:38
 msgid "Both"
 msgstr "Ambos"
 
-#: src/templates/header.php:36
+#: src/templates/header.php:39
 msgid "Male"
 msgstr "Masculino"
 
-#: src/templates/header.php:37
+#: src/templates/header.php:40
 msgid "Female"
 msgstr "Feminino"
 
-#: src/templates/header.php:39
+#: src/templates/header.php:42
 msgid ""
 "Specify whether you would like to have only male or only female users "
 "generated."
@@ -138,11 +141,11 @@ msgstr ""
 "Especifique se você gostaria de ter apenas usuários masculinos ou femininos "
 "gerados."
 
-#: src/templates/header.php:44
+#: src/templates/header.php:47
 msgid "Seed"
 msgstr "Semente"
 
-#: src/templates/header.php:48
+#: src/templates/header.php:51
 msgid ""
 "Seeds can be any string or sequence of characters. They allow you to always "
 "generate the same set of users."
@@ -150,19 +153,29 @@ msgstr ""
 "Sementes podem ser qualquer string ou sequência de caracteres. Elas permitem "
 "que você gere o mesmo conjunto de usuários."
 
-#: src/templates/header.php:53
+#: src/templates/header.php:56
 msgid "Nationalities"
 msgstr "Nacionalidades"
 
-#: src/templates/header.php:62
+#: src/templates/header.php:65
 msgid "Specify what nationalities you would like the users set to belongs to."
 msgstr "Especifique a(s) nacionalidade(s) do conjunto de usuários."
+
+#: src/templates/header.php:78
+msgid "Pick one WordPress User Role to be preselected on all generated users."
+msgstr ""
+"Pré selecione uma uma Função de Usuário do Wordpress para todos os usuários "
+"gerados."
+
+#: src/templates/header.php:91
+msgid "Skip users review and add them all automatically"
+msgstr "Pular revisão de usuários e adicione-os automaticamente"
 
 #: src/templates/page-settings.php:14
 msgid "Default User Role"
 msgstr "Função de Usuário Padrão"
 
-#: src/templates/result-row.php:27
+#: src/templates/result-row.php:38
 msgid "Discard User"
 msgstr "Descartar Usuário"
 
