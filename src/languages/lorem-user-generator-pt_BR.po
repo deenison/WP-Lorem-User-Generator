@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Lorem User Generator package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Lorem User Generator v1.2.0\n"
+"Project-Id-Version: Lorem User Generator v1.3.0\n"
 "Report-Msgid-Bugs-To: https://github.com/deenison/WP-Lorem-User-Generator/"
 "issues\n"
 "POT-Creation-Date: \n"
@@ -167,11 +167,15 @@ msgstr ""
 "Pré selecione uma uma Função de Usuário do Wordpress para todos os usuários "
 "gerados."
 
+#: src/templates/header.php:91
+msgid "Skip users review and add them all automatically"
+msgstr "Pular revisão de usuários e adicione-os automaticamente"
+
 #: src/templates/page-settings.php:14
 msgid "Default User Role"
 msgstr "Função de Usuário Padrão"
 
-#: src/templates/result-row.php:36
+#: src/templates/result-row.php:38
 msgid "Discard User"
 msgstr "Descartar Usuário"
 
