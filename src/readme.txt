@@ -56,7 +56,7 @@ Changed:
 - Minor code enhancements
 
 Fixed:
-- Fixed a couple of PHP warnings thrown under some PHP >= 7 envs
+- Fixed a couple of PHP warnings thrown under some envs running PHP >= 7.1
 
 = [1.2.0] - 2018-01-24 =
 
