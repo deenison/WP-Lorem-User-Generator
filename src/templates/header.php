@@ -88,7 +88,7 @@ $defaultUserRole = Helper::getDefaultUserRole();
         </th>
         <td>
           <label>
-            <input id="skip_review" type="checkbox" name="skip_review" value="1"> <?php _e('Skip users review and add them all automatically.', 'upstream'); ?>
+            <input id="skip_review" type="checkbox" name="skip_review" value="1"> <?php _e('Skip users review and add them all automatically', 'lorem-user-generator'); ?>
           </label>
         </td>
       </tr>
