@@ -33,7 +33,7 @@ before_script:
   - bash wp-tests/bin/install-wp-tests.sh test root '' localhost $WP_VERSION
 
 script:
-  - php phpcs.phar --standard=PSR2 $(find tests -name '*.php')
+  # - php phpcs.phar --standard=PSR2 $(find tests -name '*.php')
   # - php phpcs.phar --standard=PSR2 $(find src -name '*.php')
   - phpunit
-  - cd spec && bundle exec rspec test.rb
+  # - cd spec && bundle exec rspec test.rb

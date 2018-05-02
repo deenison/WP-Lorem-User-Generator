@@ -6,7 +6,7 @@ if (!$_tests_dir) {
     $_tests_dir = '/tmp/wordpress-tests-lib';
 }
 
-require_once dirname(__DIR__) . '/src/lorem-user-generator.php';
+require_once dirname(__DIR__) . '/src/constants.php';
 
 // Activates this plugin in WordPress so it can be tested.
 $GLOBALS['wp_tests_options'] = array(
