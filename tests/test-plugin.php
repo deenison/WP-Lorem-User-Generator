@@ -1,7 +1,7 @@
 <?php
 namespace LoremUserGenerator\Tests;
 
-class PluginTest extends WP_UnitTestCase
+class PluginTest extends \WP_UnitTestCase
 {
     public function testPluginActivation()
     {
