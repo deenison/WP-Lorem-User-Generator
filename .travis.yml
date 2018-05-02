@@ -35,5 +35,5 @@ before_script:
 script:
   # - php phpcs.phar --standard=PSR2 $(find tests -name '*.php')
   # - php phpcs.phar --standard=PSR2 $(find src -name '*.php')
-  - phpunit
+  - phpunit --group ajax
   # - cd spec && bundle exec rspec test.rb
