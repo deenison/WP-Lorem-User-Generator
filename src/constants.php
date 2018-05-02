@@ -32,9 +32,9 @@ define('LUG_PATH', dirname(__FILE__) . '/');
  * Plugin base URL.
  *
  * @since   1.0.0
+ * @deprecated
  */
-define('LUG_BASE_URL', plugin_dir_url(__FILE__));
-define('LUG_PATH', dirname(__FILE__) . '/');
+define('LUG_BASE_URL', 'deprecated');
 
 /**
  * Plugin name without spaces.
