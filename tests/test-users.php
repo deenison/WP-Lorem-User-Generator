@@ -5,9 +5,6 @@ class UsersTest extends \WP_Ajax_UnitTestCase
 {
     public function testAjaxCall()
     {
-        $a = 'fail';
-        $this->assertTrue($a);
-        /*
         $this->_setRole('administrator');
 
         $batchSize = 3;
@@ -35,6 +32,5 @@ class UsersTest extends \WP_Ajax_UnitTestCase
         $this->assertInternalType('object', $response);
         $this->assertObjectHasAttribute('success', $response);
         $this->assertFalse($response->success);
-        */
     }
 }
