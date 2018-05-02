@@ -5,7 +5,7 @@ class UsersTest extends \WP_Ajax_UnitTestCase
 {
     public function testAjaxCall()
     {
-        $a = false;
+        $a = 'fail';
         $this->assertTrue($a);
         /*
         $this->_setRole('administrator');
