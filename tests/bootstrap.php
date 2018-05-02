@@ -6,10 +6,6 @@ if (!$_tests_dir) {
     $_tests_dir = '/tmp/wordpress-tests-lib';
 }
 
-// define('PLUGIN_NAME', 'lorem-user-generator.php');
-// define('PLUGIN_FOLDER', basename(dirname(__DIR__) . '/src'));
-// define('PLUGIN_PATH', PLUGIN_FOLDER . '/' . PLUGIN_NAME);
-
 require_once dirname(__DIR__) . '/src/constants.php';
 
 // Activates this plugin in WordPress so it can be tested.
