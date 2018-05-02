@@ -5,16 +5,32 @@ notifications:
   on_success: never
   on_failure: change
 
+cache:
+  apt: true
+  directories:
+    - node_modules
+    - vendor
+    - $HOME/.composer/cache
+
 php:
   - 7.0
   # - nightly # PHP 7.x
 
 env:
-  - WP_PROJECT_TYPE=plugin WP_VERSION=latest WP_MULTISITE=0 WP_TEST_URL=http://localhost:12000 WP_TEST_USER=test WP_TEST_USER_PASS=test
+  - WP_PROJECT_TYPE=plugin
+  - WP_VERSION=latest
+  - WP_MULTISITE=0
+  - WP_TEST_URL=http://localhost:12000
+  - WP_TEST_USER=test
+  - WP_TEST_USER_PASS=test
 
-# matrix:
+matrix:
+  fast_finish: true
 #   allow_failures:
 #     - php: nightly
+
+before_install:
+  - phpenv config-rm xdebug.ini
 
 before_script:
   - curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar
