@@ -19,7 +19,7 @@ define('LUG_SLUG', 'lorem-user-generator');
  *
  * @since   1.0.0
  */
-define('LUG_PLUGIN_BOOTSTRAP', LUG_SLUG . '/' . LUG_SLUG . '.php');
+define('LUG_PLUGIN_BOOTSTRAP', basename(__DIR__) . '/' . LUG_SLUG . '.php');
 
 /**
  * Plugin base path.
