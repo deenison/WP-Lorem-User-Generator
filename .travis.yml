@@ -26,4 +26,3 @@ script:
   # - php phpcs.phar --standard=PSR2 $(find src -name '*.php')
   - phpunit
   - cd spec && bundle exec rspec test.rb
-
