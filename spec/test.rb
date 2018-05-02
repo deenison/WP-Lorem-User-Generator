@@ -30,7 +30,7 @@ Capybara.register_driver :poltergeist do |app|
     debug: false,
     js_errors: false, # Use true if you are really careful about your site
     phantomjs_logger: '/dev/null',
-    timeout: 300,
+    timeout: 120,
     :phantomjs_options => [
        '--webdriver-logfile=/dev/null',
        '--load-images=no',
@@ -38,7 +38,7 @@ Capybara.register_driver :poltergeist do |app|
        '--ignore-ssl-errors=yes',
        '--ssl-protocol=TLSv1'
     ],
-    window_size: [1920,1080]
+    window_size: [1280,1024]
    )
 end
 
