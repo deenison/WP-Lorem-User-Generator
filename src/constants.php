@@ -26,7 +26,7 @@ define('LUG_PLUGIN_BOOTSTRAP', LUG_SLUG . '/' . LUG_SLUG . '.php');
  *
  * @since   1.0.0
  */
-define('LUG_PATH', plugin_dir_path(__FILE__));
+define('LUG_PATH', dirname(__FILE__) . '/');
 
 /**
  * Plugin base URL.
@@ -34,6 +34,7 @@ define('LUG_PATH', plugin_dir_path(__FILE__));
  * @since   1.0.0
  */
 define('LUG_BASE_URL', plugin_dir_url(__FILE__));
+define('LUG_PATH', dirname(__FILE__) . '/');
 
 /**
  * Plugin name without spaces.
