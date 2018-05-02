@@ -16,6 +16,6 @@ $GLOBALS['wp_tests_options'] = array(
 require_once $_tests_dir . '/includes/functions.php';
 require_once 'helper.php';
 
-tests_add_filter('muplugins_loaded', array('\LoremUserGenerator\Tests', '_manually_load_plugin'));
+tests_add_filter('muplugins_loaded', array('\LoremUserGenerator\Tests\PluginTest', '_manually_load_plugin'));
 
 require $_tests_dir . '/includes/bootstrap.php';
