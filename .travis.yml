@@ -17,11 +17,12 @@ env:
 #     - php: nightly
 
 before_script:
-  # - curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar
+  - curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar
   - git clone https://github.com/Seravo/wordpress-test-template wp-tests
   - bash wp-tests/bin/install-wp-tests.sh test root '' localhost $WP_VERSION
 
 script:
+  - php phpcs.phar --standard=PSR2 $(find tests -name '*.php')
   # - php phpcs.phar --standard=PSR2 $(find src -name '*.php')
   - phpunit
   - cd wp-tests/spec && bundle exec rspec test.rb
