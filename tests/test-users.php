@@ -31,6 +31,6 @@ class UsersTest extends \WP_Ajax_UnitTestCase
         $response = json_decode($this->_last_response);
         $this->assertInternalType('object', $response);
         $this->assertObjectHasAttribute('success', $response);
-        $this->assertTrue($response->success);
+        $this->assertFalse($response->success);
     }
 }
