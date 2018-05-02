@@ -73,4 +73,4 @@ define('LUG_NAMESPACE', '\\' . LUG_NAME . '\\');
 define('LUG_RANDOM_API_URL', "https://randomuser.me/api");
 
 // Load all plugin source files.
-require_once LUG_PATH . 'autoloader.php';
+// require_once LUG_PATH . 'autoloader.php';
