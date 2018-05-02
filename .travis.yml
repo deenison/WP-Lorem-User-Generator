@@ -25,5 +25,5 @@ script:
   - php phpcs.phar --standard=PSR2 $(find tests -name '*.php')
   # - php phpcs.phar --standard=PSR2 $(find src -name '*.php')
   - phpunit
-  - cd wp-tests/spec && bundle exec rspec test.rb
+  - cd spec && bundle exec rspec test.rb
 
