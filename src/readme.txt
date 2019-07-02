@@ -45,11 +45,6 @@ Absolutely! Besides the `quantity` of users to be generated, you can specify the
 
 The format is based on [Keep a Changelog](http://keepachangelog.com) and this plugin adheres to [Semantic Versioning](http://semver.org).
 
-= [@todo] =
-
-Deprecated:
-- LUG_BASE_URL constant
-
 = [1.3.0] - 2018-04-23 =
 
 Added:
