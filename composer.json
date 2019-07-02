@@ -1,0 +1,44 @@
+{
+  "name": "deenison/wp-lorem-user-generator",
+  "version": "1.3.0",
+  "type": "wordpress-plugin",
+  "license": "GPL-3.0",
+  "description": "Like Lorem Ipsum, but for users. A straightforward way to add randomly generated users to your WordPress.",
+  "homepage": "https://github.com/deenison/wp-lorem-user-generator",
+  "authors": [
+    {
+      "name": "Denison Martins",
+      "email": "contact@denison.me",
+      "homepage": "https://github.com/deenison"
+    }
+  ],
+  "keywords": [
+    "wordpress",
+    "lorem",
+    "users",
+    "generator",
+    "random",
+    "dummy-data"
+  ],
+  "config": {
+    "platform": {
+      "php": "7.3"
+    }
+  },
+  "require": {
+    "php": "~7.3"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^7.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "LoremUserGenerator\\": "src/LoremUserGenerator"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Test\\LoremUserGenerator\\": "test/LoremUserGenerator"
+    }
+  }
+}
