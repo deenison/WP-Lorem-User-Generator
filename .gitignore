@@ -2,3 +2,7 @@ node_modules
 build
 *.log
 svn
+vendor
+storage
+.DS_Store
+.idea
