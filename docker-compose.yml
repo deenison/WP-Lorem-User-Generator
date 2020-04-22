@@ -1,0 +1,36 @@
+version: "3.1"
+
+services:
+  wordpress.lug.local:
+    image: wordpress:5.4.0-php7.2-apache
+    volumes:
+      - ./wordpress:/var/www/html
+      - ./src:/var/www/html/wp-content/plugins/lorem-user-generator
+    ports:
+      - "8080:80"
+    depends_on:
+      - mysql.lug.local
+    links:
+      - mysql.lug.local
+    environment:
+      - VIRTUAL_HOST=wordpress.lug.local
+      - WORDPRESS_DB_HOST=mysql.lug.local
+      - WORDPRESS_DB_USER=root
+      - WORDPRESS_DB_PASSWORD=secret
+      - WORDPRESS_DB_NAME=wordpress
+      - WORDPRESS_DEBUG=1
+
+  mysql.lug.local:
+    image: mysql:5.7
+    ports:
+      - "33306:3306"
+    environment:
+      - MYSQL_DATABASE=wordpress
+      - MYSQL_USER=root
+      - MYSQL_ROOT_PASSWORD=secret
+    volumes:
+      - ./persistence/mysql:/var/lib/mysql
+
+volumes:
+  wordpress.lug.local:
+  mysql.lug.local:
