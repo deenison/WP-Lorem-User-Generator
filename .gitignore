@@ -5,6 +5,8 @@ packages/
 svn/
 wordpress/
 persistence/
+vendor/
 
 .DS_Store
 *.log
+*.cache

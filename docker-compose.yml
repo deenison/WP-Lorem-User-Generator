@@ -5,7 +5,7 @@ services:
     image: wordpress:5.4.0-php7.2-apache
     volumes:
       - ./wordpress:/var/www/html
-      - ./src:/var/www/html/wp-content/plugins/lorem-user-generator
+      - ./:/var/www/html/wp-content/plugins/lorem-user-generator
     ports:
       - "8080:80"
     depends_on:
