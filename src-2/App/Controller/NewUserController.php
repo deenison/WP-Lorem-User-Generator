@@ -43,7 +43,10 @@ final class NewUserController
 
         $httpClient = (new GuzzleHttpClientBuilder())->build();
         $app = new LoremUserGeneratorFacade($httpClient);
-        $app->fetchUserWithRandomData();
+
+        $user = $app->fetchUserWithRandomData();
+
+        $responsePayload = $user;
 
         /*
         $responsePayload = [
@@ -59,7 +62,7 @@ final class NewUserController
             ],
         ];
         */
-        $responsePayload = [];
+
         echo json_encode($responsePayload);
 
         wp_die();

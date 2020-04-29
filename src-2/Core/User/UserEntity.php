@@ -2,7 +2,7 @@
 
 namespace LoremUserGenerator\Core\User;
 
-final class UserEntity
+final class UserEntity implements \JsonSerializable
 {
     /** @var string */
     private $firstName;
@@ -52,5 +52,16 @@ final class UserEntity
     public function getPassword(): string
     {
         return $this->password;
+    }
+
+    public function jsonSerialize()
+    {
+        return [
+            'first_name' => $this->firstName,
+            'last_name' => $this->lastName,
+            'email' => $this->email,
+            'username' => $this->username,
+            'password' => $this->password,
+        ];
     }
 }
