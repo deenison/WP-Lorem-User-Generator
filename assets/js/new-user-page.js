@@ -50,8 +50,6 @@
         $('#createuser input[name="email"]').val(response.data.email);
         $('#createuser input[name="first_name"]').val(response.data.first_name);
         $('#createuser input[name="last_name"]').val(response.data.last_name);
-        $('#createuser input[name="url"]').val(response.data.website);
-        $('#createuser select[name="role"]').val(response.data.role);
         $('#createuser input[name="pass1"]')
           .val(response.data.password)
           .attr('data-pw', response.data.password)

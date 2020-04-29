@@ -46,23 +46,10 @@ final class NewUserController
 
         $user = $app->fetchUserWithRandomData();
 
-        $responsePayload = $user;
-
-        /*
         $responsePayload = [
             'status' => 'success',
-            'data' => [
-                'username' => 'lorem',
-                'email' => 'lorem@ipsum.sbx',
-                'first_name' => 'Lorem',
-                'last_name' => 'Ipsum',
-                'website' => 'http://localhost:8080',
-                'password' => 'lorem-ipsum',
-                'role' => 'author',
-            ],
+            'data' => $user,
         ];
-        */
-
         echo json_encode($responsePayload);
 
         wp_die();
