@@ -21,18 +21,55 @@
         checkCounter += 1;
 
         if (checkCounter >= MAX_CHECK_COUNT) {
-          clearInterval(formInstanceCheckerInterval);
+          clearInterval(needleElementCheckerInterval);
           return callback(null);
         }
 
-        needleElement = document.getElementById(needleSelector);
-        if (needleElement) {
+        needleElement = $(needleSelector);
+        if (needleElement.length > 0) {
           clearInterval(needleElementCheckerInterval);
           return callback(needleElement);
         }
       },
       CHECK_INTERVAL_IN_MILLISECONDS
     );
+  }
+
+  function handleRequestResponse(response) {
+    const fetchStatus = response.status || '';
+
+    if (fetchStatus === 'success') {
+      return handleSuccessfulResponse(response.data);
+    }
+
+    return handleFailedResponse(response.error);
+  }
+
+  const outputWrapper = {
+    setContent: (content) => {
+      $('#lorem-user-generator output').text(content);
+    },
+    clearContent: () => {
+      $('#lorem-user-generator output').text('&nbsp;');
+    },
+  };
+
+  function handleSuccessfulResponse(user) {
+    $('#createuser input[name="user_login"]').val(user.username);
+    $('#createuser input[name="email"]').val(user.email);
+    $('#createuser input[name="first_name"]').val(user.first_name);
+    $('#createuser input[name="last_name"]').val(user.last_name);
+    $('#createuser input[name="pass1"]')
+      .val(user.password)
+      .attr('data-pw', user.password)
+      .attr('disabled', null);
+
+    $('#createuser .button.wp-generate-pw.hide-if-no-js').css('display', 'none');
+    $('#createuser .wp-pwd.hide-if-js').css('display', 'block');
+  }
+
+  function handleFailedResponse(errorMessage) {
+    outputWrapper.setContent(errorMessage);
   }
 
   function sendFetchRandomUserRequest() {
@@ -44,20 +81,9 @@
         nonce: $context.nonces.fetch_random_data,
       },
       beforeSend: function() {
+        outputWrapper.setContent('Trying to reach remote data...');
       },
-      success: function(response) {
-        $('#createuser input[name="user_login"]').val(response.data.username);
-        $('#createuser input[name="email"]').val(response.data.email);
-        $('#createuser input[name="first_name"]').val(response.data.first_name);
-        $('#createuser input[name="last_name"]').val(response.data.last_name);
-        $('#createuser input[name="pass1"]')
-          .val(response.data.password)
-          .attr('data-pw', response.data.password)
-          .attr('disabled', null);
-
-        $('#createuser .button.wp-generate-pw.hide-if-no-js').css('display', 'none');
-        $('#createuser .wp-pwd.hide-if-js').css('display', 'block');
-      },
+      success: handleRequestResponse,
       error: function(request, textStatus, err) {
       },
       complete: function() {
@@ -66,10 +92,15 @@
   }
 
   function createFetchButton() {
-    const btn = document.createElement('button');
-    btn.innerText = 'Lorem User Generator';
-    btn.addEventListener('click', sendFetchRandomUserRequest);
-    return btn;
+    const wrapper = $(
+      '<section id="lorem-user-generator" style="border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; padding: 15px 0 15px 0;">' +
+        '<h3>Lorem User Generator</h3>' +
+        '<button type="button">Fill form with random data</button>' +
+        '<output style="display: block;">&nbsp;</output>' +
+      '</section>');
+    const btn = $('button', wrapper);
+    btn.on('click', sendFetchRandomUserRequest);
+    return wrapper;
   }
 
   function insertFetchButtonIntoElement(needle, haystack) {
@@ -77,10 +108,10 @@
   }
 
   getElementWhenAvailable(
-    'createuser',
+    '#createuser',
       form => {
       const fetchBtn = createFetchButton();
-      insertFetchButtonIntoElement(fetchBtn, form);
+      $(form).before(fetchBtn);
     }
   );
 })(window, window.document, jQuery, LoremUserGenerator);

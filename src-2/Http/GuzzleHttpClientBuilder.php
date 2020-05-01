@@ -12,7 +12,10 @@ final class GuzzleHttpClientBuilder implements HttpClientBuilderInterface
 
     public function __construct()
     {
-        $this->guzzleClient = new Client();
+        $this->guzzleClient = new Client([
+            'http_errors' => true,
+            'timeout' => 0.1,
+        ]);
     }
 
     public function build(): ClientInterface

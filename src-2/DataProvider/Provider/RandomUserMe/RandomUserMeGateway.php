@@ -3,10 +3,11 @@
 namespace LoremUserGenerator\DataProvider\Provider\RandomUserMe;
 
 use LoremUserGenerator\Core\User\UserEntity;
+use LoremUserGenerator\DataProvider\Provider\DataProviderGatewayInterface;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestInterface;
 
-final class RandomUserMeGateway
+final class RandomUserMeGateway implements DataProviderGatewayInterface
 {
     /** @var ClientInterface */
     private $httpClient;

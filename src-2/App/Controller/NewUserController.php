@@ -4,7 +4,10 @@ namespace LoremUserGenerator\App\Controller;
 
 use LoremUserGenerator\App\Asset\AssetEnqueuer;
 use LoremUserGenerator\Core\LoremUserGeneratorFacade;
+use LoremUserGenerator\Core\User\UserEntity;
+use LoremUserGenerator\DataProvider\Exception\DataProviderException;
 use LoremUserGenerator\Http\GuzzleHttpClientBuilder;
+use Psr\Http\Client\ClientExceptionInterface;
 
 final class NewUserController
 {
@@ -44,14 +47,44 @@ final class NewUserController
         $httpClient = (new GuzzleHttpClientBuilder())->build();
         $app = new LoremUserGeneratorFacade($httpClient);
 
-        $user = $app->fetchUserWithRandomData();
+        try {
+            $user = $app->fetchUserWithRandomData();
+        } catch (ClientExceptionInterface $exception) {
+            self::finishWithFailedJsonResponse($exception->getMessage());
+        } catch (DataProviderException | \Throwable $exception) {
+            $errorMessage = preg_match('/\s+time[d]?\s+out/i', $exception->getMessage())
+                ? 'The request has timed out.'
+                : $exception->getMessage();
+            self::finishWithErrorJsonResponse($errorMessage);
+        }
 
-        $responsePayload = [
+        self::finishWithSuccessfulJsonResponse($user);
+    }
+
+    private static function finishWithSuccessfulJsonResponse(UserEntity $user): void
+    {
+        echo json_encode([
             'status' => 'success',
             'data' => $user,
-        ];
-        echo json_encode($responsePayload);
+        ]);
+        wp_die();
+    }
 
+    private static function finishWithFailedJsonResponse(string $errorMessage): void
+    {
+        echo json_encode([
+            'status' => 'fail',
+            'error' => $errorMessage,
+        ]);
+        wp_die();
+    }
+
+    private static function finishWithErrorJsonResponse(string $errorMessage): void
+    {
+        echo json_encode([
+            'status' => 'error',
+            'error' => $errorMessage,
+        ]);
         wp_die();
     }
 
