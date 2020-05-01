@@ -50,11 +50,13 @@
       $('#lorem-user-generator output').text(content);
     },
     clearContent: () => {
-      $('#lorem-user-generator output').text('&nbsp;');
+      $('#lorem-user-generator output').text('');
     },
   };
 
   function handleSuccessfulResponse(user) {
+    outputWrapper.clearContent();
+
     $('#createuser input[name="user_login"]').val(user.username);
     $('#createuser input[name="email"]').val(user.email);
     $('#createuser input[name="first_name"]').val(user.first_name);
@@ -66,6 +68,17 @@
 
     $('#createuser .button.wp-generate-pw.hide-if-no-js').css('display', 'none');
     $('#createuser .wp-pwd.hide-if-js').css('display', 'block');
+  }
+
+  function clearForm() {
+    $('#createuser input[name="user_login"]').val('');
+    $('#createuser input[name="email"]').val('');
+    $('#createuser input[name="first_name"]').val('');
+    $('#createuser input[name="last_name"]').val('');
+    $('#createuser input[name="pass1"]')
+      .val('')
+      .attr('data-pw', '')
+      .attr('disabled', null);
   }
 
   function handleFailedResponse(errorMessage) {
@@ -95,16 +108,15 @@
     const wrapper = $(
       '<section id="lorem-user-generator" style="border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; padding: 15px 0 15px 0;">' +
         '<h3>Lorem User Generator</h3>' +
-        '<button type="button">Fill form with random data</button>' +
-        '<output style="display: block;">&nbsp;</output>' +
+        '<button type="button" data-action="fetch">Fill form with random data</button>' +
+        '<button type="button" data-action="clear-form">Clear form</button>' +
+        '<output style="display: block;"></output>' +
       '</section>');
-    const btn = $('button', wrapper);
-    btn.on('click', sendFetchRandomUserRequest);
-    return wrapper;
-  }
 
-  function insertFetchButtonIntoElement(needle, haystack) {
-    haystack.insertAdjacentElement('beforeBegin', needle);
+    $('button[data-action="fetch"]', wrapper).on('click', sendFetchRandomUserRequest);
+    $('button[data-action="clear-form"]', wrapper).on('click', clearForm);
+
+    return wrapper;
   }
 
   getElementWhenAvailable(

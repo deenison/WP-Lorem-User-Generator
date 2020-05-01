@@ -14,7 +14,6 @@ final class GuzzleHttpClientBuilder implements HttpClientBuilderInterface
     {
         $this->guzzleClient = new Client([
             'http_errors' => true,
-            'timeout' => 0.1,
         ]);
     }
 
