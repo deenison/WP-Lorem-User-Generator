@@ -7,6 +7,7 @@ use LoremUserGenerator\Core\LoremUserGeneratorFacade;
 use LoremUserGenerator\Core\User\UserEntity;
 use LoremUserGenerator\DataProvider\Exception\DataProviderException;
 use LoremUserGenerator\Http\Adapter\Guzzle\GuzzleHttpClientBuilder;
+use LoremUserGenerator\Http\HttpClientService;
 use Psr\Http\Client\ClientExceptionInterface;
 
 final class NewUserController
@@ -44,7 +45,7 @@ final class NewUserController
     {
         header('Content-Type: application/json');
 
-        $httpClient = (new GuzzleHttpClientBuilder())->build();
+        $httpClient = (new HttpClientService())->getHttpClient();
         $app = new LoremUserGeneratorFacade($httpClient);
 
         try {
