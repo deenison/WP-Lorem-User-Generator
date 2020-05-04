@@ -2,7 +2,7 @@
 
 namespace Test\LoremUserGenerator\Http;
 
-use LoremUserGenerator\Http\Adapter\Guzzle\GuzzleHttpClientAdapter;
+use LoremUserGenerator\Http\Client\Guzzle\GuzzleHttpClientAdapter;
 use LoremUserGenerator\Http\HttpClientService;
 use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\TestCase;

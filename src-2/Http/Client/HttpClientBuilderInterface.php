@@ -1,6 +1,6 @@
 <?php
 
-namespace LoremUserGenerator\Http;
+namespace LoremUserGenerator\Http\Client;
 
 use Psr\Http\Client\ClientInterface;
 

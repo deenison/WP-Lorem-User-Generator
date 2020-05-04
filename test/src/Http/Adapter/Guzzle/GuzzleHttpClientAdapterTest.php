@@ -7,7 +7,7 @@ use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
-use LoremUserGenerator\Http\Adapter\Guzzle\GuzzleHttpClientAdapter;
+use LoremUserGenerator\Http\Client\Guzzle\GuzzleHttpClientAdapter;
 use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\TestCase;
 

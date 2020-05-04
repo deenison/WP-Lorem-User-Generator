@@ -2,7 +2,7 @@
 
 namespace Test\LoremUserGenerator\Http;
 
-use LoremUserGenerator\Http\HttpClientBuilderInterface;
+use LoremUserGenerator\Http\Client\HttpClientBuilderInterface;
 use Psr\Http\Client\ClientInterface;
 
 final class FakeHttpClientBuilder implements HttpClientBuilderInterface

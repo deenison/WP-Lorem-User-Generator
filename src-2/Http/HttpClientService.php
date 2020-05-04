@@ -2,7 +2,8 @@
 
 namespace LoremUserGenerator\Http;
 
-use LoremUserGenerator\Http\Adapter\Guzzle\GuzzleHttpClientBuilder;
+use LoremUserGenerator\Http\Client\Guzzle\GuzzleHttpClientBuilder;
+use LoremUserGenerator\Http\Client\HttpClientBuilderInterface;
 use Psr\Http\Client\ClientInterface;
 
 final class HttpClientService
