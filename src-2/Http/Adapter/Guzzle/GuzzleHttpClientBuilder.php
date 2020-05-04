@@ -1,8 +1,9 @@
 <?php
 
-namespace LoremUserGenerator\Http;
+namespace LoremUserGenerator\Http\Adapter\Guzzle;
 
 use GuzzleHttp\Client;
+use LoremUserGenerator\Http\HttpClientBuilderInterface;
 use Psr\Http\Client\ClientInterface;
 
 final class GuzzleHttpClientBuilder implements HttpClientBuilderInterface

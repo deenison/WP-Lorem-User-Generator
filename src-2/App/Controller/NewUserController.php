@@ -6,7 +6,7 @@ use LoremUserGenerator\App\Asset\AssetEnqueuer;
 use LoremUserGenerator\Core\LoremUserGeneratorFacade;
 use LoremUserGenerator\Core\User\UserEntity;
 use LoremUserGenerator\DataProvider\Exception\DataProviderException;
-use LoremUserGenerator\Http\GuzzleHttpClientBuilder;
+use LoremUserGenerator\Http\Adapter\Guzzle\GuzzleHttpClientBuilder;
 use Psr\Http\Client\ClientExceptionInterface;
 
 final class NewUserController

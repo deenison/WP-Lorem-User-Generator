@@ -1,6 +1,6 @@
 <?php
 
-namespace LoremUserGenerator\Http;
+namespace LoremUserGenerator\Http\Adapter\Guzzle;
 
 use GuzzleHttp\Client;
 use Psr\Http\Client\ClientInterface;
