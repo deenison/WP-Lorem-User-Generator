@@ -3,7 +3,7 @@
 namespace LoremUserGenerator\DataProvider\Provider\RandomUserMe;
 
 use GuzzleHttp\Psr7\Request;
-use LoremUserGenerator\Core\Http\HttpRequestBuilderInterface;
+use LoremUserGenerator\Http\HttpRequestBuilderInterface;
 use Psr\Http\Message\RequestInterface;
 
 final class RandomUserMeHttpRequestBuilder implements HttpRequestBuilderInterface

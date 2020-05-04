@@ -3,7 +3,6 @@
 namespace LoremUserGenerator\Http;
 
 use GuzzleHttp\Client;
-use LoremUserGenerator\Core\Http\HttpClientBuilderInterface;
 use Psr\Http\Client\ClientInterface;
 
 final class GuzzleHttpClientBuilder implements HttpClientBuilderInterface
