@@ -1,6 +1,6 @@
 <?php
 
-namespace Test\LoremUserGenerator\Http;
+namespace Test\LoremUserGenerator\Http\Response;
 
 use GuzzleHttp\Psr7\Response;
 use Psr\Http\Message\ResponseInterface;

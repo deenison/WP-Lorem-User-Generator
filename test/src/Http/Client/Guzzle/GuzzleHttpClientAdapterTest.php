@@ -1,6 +1,6 @@
 <?php
 
-namespace Test\LoremUserGenerator\Http\Adapter\Guzzle;
+namespace Test\LoremUserGenerator\Http\Client\Guzzle;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;

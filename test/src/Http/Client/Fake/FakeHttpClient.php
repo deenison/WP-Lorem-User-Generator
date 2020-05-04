@@ -1,6 +1,6 @@
 <?php
 
-namespace Test\LoremUserGenerator\Http;
+namespace Test\LoremUserGenerator\Http\Client\Fake;
 
 use Psr\Http\Client\ClientExceptionInterface;
 use Psr\Http\Client\ClientInterface;

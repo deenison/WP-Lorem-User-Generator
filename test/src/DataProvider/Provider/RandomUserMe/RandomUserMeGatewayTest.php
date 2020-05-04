@@ -6,9 +6,8 @@ use LoremUserGenerator\DataProvider\Exception\DataProviderException;
 use LoremUserGenerator\DataProvider\Provider\RandomUserMe\RandomUserMeGateway;
 use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\TestCase;
-use Test\LoremUserGenerator\Http\FakeHttpClient;
-use Test\LoremUserGenerator\Http\FakeHttpClientException;
-use Test\LoremUserGenerator\Http\FakeHttpResponse;
+use Test\LoremUserGenerator\Http\Client\Fake\FakeHttpClient;
+use Test\LoremUserGenerator\Http\Response\FakeHttpResponse;
 
 class RandomUserMeGatewayTest extends TestCase
 {
