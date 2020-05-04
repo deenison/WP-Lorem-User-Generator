@@ -2,8 +2,8 @@
 
 namespace LoremUserGenerator\DataProvider\Provider\RandomUserMe;
 
-use LoremUserGenerator\Core\User\UserEntity;
 use LoremUserGenerator\DataProvider\Provider\DataProviderGatewayInterface;
+use LoremUserGenerator\User\UserEntity;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestInterface;
 

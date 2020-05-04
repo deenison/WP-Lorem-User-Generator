@@ -1,6 +1,6 @@
 <?php
 
-namespace LoremUserGenerator\Core\User;
+namespace LoremUserGenerator\User;
 
 final class UserEntity implements \JsonSerializable
 {

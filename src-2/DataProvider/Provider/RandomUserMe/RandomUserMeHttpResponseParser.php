@@ -2,8 +2,8 @@
 
 namespace LoremUserGenerator\DataProvider\Provider\RandomUserMe;
 
-use LoremUserGenerator\Core\User\UserEntity;
 use LoremUserGenerator\DataProvider\Exception\DataProviderException;
+use LoremUserGenerator\User\UserEntity;
 use Psr\Http\Message\ResponseInterface;
 
 final class RandomUserMeHttpResponseParser

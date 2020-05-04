@@ -1,6 +1,6 @@
 <?php
 
-namespace LoremUserGenerator\Core;
+namespace LoremUserGenerator;
 
 use LoremUserGenerator\Core\User\UserEntity;
 use LoremUserGenerator\DataProvider\Provider\RandomUserMe\RandomUserMeGateway;

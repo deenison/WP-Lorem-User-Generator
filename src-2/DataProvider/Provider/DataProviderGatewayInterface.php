@@ -2,7 +2,7 @@
 
 namespace LoremUserGenerator\DataProvider\Provider;
 
-use LoremUserGenerator\Core\User\UserEntity;
+use LoremUserGenerator\User\UserEntity;
 
 interface DataProviderGatewayInterface
 {
