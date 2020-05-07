@@ -3,6 +3,7 @@
 namespace LoremUserGenerator\App\Controller;
 
 use LoremUserGenerator\App\Asset\AssetEnqueuer;
+use LoremUserGenerator\App\Http\Response\ErrorHttpResponse;
 use LoremUserGenerator\App\Http\Response\FailedHttpResponse;
 use LoremUserGenerator\App\Nonce\NewUserNonceService;
 use LoremUserGenerator\DataProvider\Exception\DataProviderException;
@@ -85,10 +86,8 @@ final class NewUserController
 
     private static function finishWithErrorJsonResponse(string $errorMessage): void
     {
-        echo json_encode([
-            'status' => 'error',
-            'error' => $errorMessage,
-        ]);
+        $errorHttpResponse = new ErrorHttpResponse($errorMessage);
+        echo json_encode($errorHttpResponse);
         wp_die();
     }
 
