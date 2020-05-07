@@ -58,6 +58,16 @@
     },
   };
 
+  function enableForm() {
+    $('button', $('#lorem-user-generator')).removeClass('disabled').attr('disabled', null);
+    $('button, input, select', $('#createuser')).removeClass('disabled').attr('disabled', null);
+  }
+
+  function disableForm() {
+    $('button', $('#lorem-user-generator')).addClass('disabled').attr('disabled', 'disabled');
+    $('button, input, select', $('#createuser')).addClass('disabled').attr('disabled', 'disabled');
+  }
+
   function handleSuccessfulResponse(user) {
     outputWrapper.clearContent();
 
@@ -97,11 +107,13 @@
       },
       beforeSend: function() {
         outputWrapper.setContent('Trying to reach remote data...');
+        disableForm();
       },
       success: handleRequestResponse,
       error: function(request, textStatus, err) {
       },
       complete: function() {
+        enableForm();
       }
     });
   }
@@ -116,7 +128,10 @@
       '</section>');
 
     $('button[data-action="fetch"]', wrapper).on('click', sendFetchRandomUserRequest);
-    $('button[data-action="clear-form"]', wrapper).on('click', clearForm);
+    $('button[data-action="clear-form"]', wrapper).on('click', () => {
+      clearForm();
+      enableForm();
+    });
 
     return wrapper;
   }
