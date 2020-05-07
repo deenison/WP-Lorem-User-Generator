@@ -30,7 +30,7 @@ final class HttpResponseDispatcher
         self::dispatch($failedHttpResponse);
     }
 
-    private static function dispatch(HttpResponse $httpResponse): void
+    public static function dispatch(HttpResponse $httpResponse): void
     {
         header(self::CONTENT_TYPE_JSON);
         echo json_encode($httpResponse);

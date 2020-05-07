@@ -3,12 +3,11 @@
 namespace LoremUserGenerator\App\Controller;
 
 use LoremUserGenerator\App\Asset\AssetEnqueuer;
+use LoremUserGenerator\App\DataProviderService;
 use LoremUserGenerator\App\Http\Response\HttpResponseDispatcher;
 use LoremUserGenerator\App\Nonce\NewUserNonceService;
-use LoremUserGenerator\DataProvider\Exception\DataProviderException;
 use LoremUserGenerator\Http\HttpClientService;
 use LoremUserGenerator\LoremUserGeneratorFacade;
-use Psr\Http\Client\ClientExceptionInterface;
 
 final class NewUserController
 {
@@ -50,18 +49,11 @@ final class NewUserController
         $httpClient = (new HttpClientService())->getHttpClient();
         $app = new LoremUserGeneratorFacade($httpClient);
 
-        try {
-            $user = $app->fetchUserWithRandomData();
-        } catch (ClientExceptionInterface $exception) {
-            HttpResponseDispatcher::dispatchFailedResponse($exception->getMessage());
-        } catch (DataProviderException | \Throwable $exception) {
-            $errorMessage = preg_match('/\s+time[d]?\s+out/i', $exception->getMessage())
-                ? 'The request has timed out.'
-                : $exception->getMessage();
-            HttpResponseDispatcher::dispatchErrorResponse($errorMessage);
-        }
+        $dataProviderService = new DataProviderService($app);
 
-        HttpResponseDispatcher::dispatchSuccessfulResponse($user);
+        $httpResponse = $dataProviderService->fetchRandomUser();
+
+        HttpResponseDispatcher::dispatch($httpResponse);
     }
 
     private static function isPageSafeToLoadScripts(): bool
