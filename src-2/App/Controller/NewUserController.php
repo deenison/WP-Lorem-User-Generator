@@ -3,11 +3,10 @@
 namespace LoremUserGenerator\App\Controller;
 
 use LoremUserGenerator\App\Asset\AssetEnqueuer;
-use LoremUserGenerator\Core\LoremUserGeneratorFacade;
-use LoremUserGenerator\Core\User\UserEntity;
 use LoremUserGenerator\DataProvider\Exception\DataProviderException;
-use LoremUserGenerator\Http\Adapter\Guzzle\GuzzleHttpClientBuilder;
 use LoremUserGenerator\Http\HttpClientService;
+use LoremUserGenerator\LoremUserGeneratorFacade;
+use LoremUserGenerator\User\UserEntity;
 use Psr\Http\Client\ClientExceptionInterface;
 
 final class NewUserController

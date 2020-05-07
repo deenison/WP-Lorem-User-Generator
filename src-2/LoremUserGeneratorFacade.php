@@ -2,8 +2,8 @@
 
 namespace LoremUserGenerator;
 
-use LoremUserGenerator\Core\User\UserEntity;
 use LoremUserGenerator\DataProvider\Provider\RandomUserMe\RandomUserMeGateway;
+use LoremUserGenerator\User\UserEntity;
 use Psr\Http\Client\ClientInterface;
 
 final class LoremUserGeneratorFacade
