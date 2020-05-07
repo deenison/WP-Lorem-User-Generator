@@ -5,6 +5,7 @@ namespace LoremUserGenerator\App\Controller;
 use LoremUserGenerator\App\Asset\AssetEnqueuer;
 use LoremUserGenerator\App\Http\Response\ErrorHttpResponse;
 use LoremUserGenerator\App\Http\Response\FailedHttpResponse;
+use LoremUserGenerator\App\Http\Response\SuccessfulHttpResponse;
 use LoremUserGenerator\App\Nonce\NewUserNonceService;
 use LoremUserGenerator\DataProvider\Exception\DataProviderException;
 use LoremUserGenerator\Http\HttpClientService;
@@ -70,10 +71,8 @@ final class NewUserController
 
     private static function finishWithSuccessfulJsonResponse(UserEntity $user): void
     {
-        echo json_encode([
-            'status' => 'success',
-            'data' => $user,
-        ]);
+        $successfulHttpResponse = new SuccessfulHttpResponse($user);
+        echo json_encode($successfulHttpResponse);
         wp_die();
     }
 
