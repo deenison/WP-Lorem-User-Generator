@@ -2,7 +2,7 @@
 
 namespace LoremUserGenerator\App\Http\Response;
 
-final class ErrorHttpResponse implements \JsonSerializable
+final class ErrorHttpResponse implements HttpResponse
 {
     private const RESPONSE_STATUS = 'error';
     private const BAD_ERROR_MESSAGE_EXCEPTION_MESSAGE = 'An error message must be provided';

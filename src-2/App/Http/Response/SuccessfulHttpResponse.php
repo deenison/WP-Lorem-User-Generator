@@ -4,7 +4,7 @@ namespace LoremUserGenerator\App\Http\Response;
 
 use LoremUserGenerator\User\UserEntity;
 
-final class SuccessfulHttpResponse implements \JsonSerializable
+final class SuccessfulHttpResponse implements HttpResponse
 {
     private const RESPONSE_STATUS = 'success';
 

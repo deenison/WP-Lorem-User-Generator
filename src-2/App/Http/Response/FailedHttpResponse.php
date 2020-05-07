@@ -2,7 +2,7 @@
 
 namespace LoremUserGenerator\App\Http\Response;
 
-final class FailedHttpResponse implements \JsonSerializable
+final class FailedHttpResponse implements HttpResponse
 {
     private const RESPONSE_STATUS = 'fail';
     private const BAD_FAIL_MESSAGE_EXCEPTION_MESSAGE = 'A fail message must be provided';
