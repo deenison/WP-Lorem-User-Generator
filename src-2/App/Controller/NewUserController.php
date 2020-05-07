@@ -3,6 +3,7 @@
 namespace LoremUserGenerator\App\Controller;
 
 use LoremUserGenerator\App\Asset\AssetEnqueuer;
+use LoremUserGenerator\App\Nonce\NewUserNonceService;
 use LoremUserGenerator\DataProvider\Exception\DataProviderException;
 use LoremUserGenerator\Http\HttpClientService;
 use LoremUserGenerator\LoremUserGeneratorFacade;
@@ -34,7 +35,7 @@ final class NewUserController
             'LoremUserGenerator',
             [
                 'nonces' => [
-                    'fetch_random_data' => wp_create_nonce('lorem_user_generator_fetch_random_data'),
+                    'fetch_random_data' => NewUserNonceService::generateNonce(),
                 ],
             ]
         );
@@ -43,6 +44,10 @@ final class NewUserController
     public static function fetchRandomData(): void
     {
         header('Content-Type: application/json');
+
+        if (!NewUserNonceService::isNonceInRequestValid()) {
+            self::finishWithFailedJsonResponse('Please, refresh your page and try again.');
+        }
 
         $httpClient = (new HttpClientService())->getHttpClient();
         $app = new LoremUserGeneratorFacade($httpClient);
