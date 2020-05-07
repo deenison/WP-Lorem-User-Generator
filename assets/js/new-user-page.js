@@ -47,10 +47,14 @@
 
   const outputWrapper = {
     setContent: (content) => {
-      $('#lorem-user-generator output').text(content);
+      const outputWrapper = $('#lorem-user-generator output');
+      $('span', outputWrapper).text(content);
+      outputWrapper.css('display', 'block');
     },
     clearContent: () => {
-      $('#lorem-user-generator output').text('');
+      const outputWrapper = $('#lorem-user-generator output');
+      $('span', outputWrapper).text('');
+      outputWrapper.css('display', 'none');
     },
   };
 
@@ -75,10 +79,8 @@
     $('#createuser input[name="email"]').val('');
     $('#createuser input[name="first_name"]').val('');
     $('#createuser input[name="last_name"]').val('');
-    $('#createuser input[name="pass1"]')
-      .val('')
-      .attr('data-pw', '')
-      .attr('disabled', null);
+    $('#createuser button.wp-cancel-pw').click();
+    $(this).focus();
   }
 
   function handleFailedResponse(errorMessage) {
@@ -108,9 +110,9 @@
     const wrapper = $(
       '<section id="lorem-user-generator" style="border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; padding: 15px 0 15px 0;">' +
         '<h3>Lorem User Generator</h3>' +
-        '<button type="button" data-action="fetch">Fill form with random data</button>' +
-        '<button type="button" data-action="clear-form">Clear form</button>' +
-        '<output style="display: block;"></output>' +
+        '<button type="button" class="button button-primary" data-action="fetch">Fill form with random data</button>' +
+        '<button type="button" class="button" data-action="clear-form" style="margin-left: 10px;">Clear form</button>' +
+        '<output style="display: none; margin-top: 10px; border: 1px solid #ccc; border-radius: 4px; padding: 5px 10px;"><strong>Console:</strong>&nbsp;<span></span></output>' +
       '</section>');
 
     $('button[data-action="fetch"]', wrapper).on('click', sendFetchRandomUserRequest);
