@@ -27,7 +27,7 @@ final class Bootstrap
             'Lorem User Generator',
             'create_users',
             'lorem-user-generator',
-            array(NewUserController::class, 'render')
+            [NewUserController::class, 'render']
         );
     }
 

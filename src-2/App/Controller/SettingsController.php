@@ -16,7 +16,7 @@ final class SettingsController
             'Lorem User Generator',
             'manage_options',
             'lorem-user-generator_settings',
-            array(self::class, 'renderSettingsPageView')
+            [self::class, 'renderSettingsPageView']
         );
     }
 

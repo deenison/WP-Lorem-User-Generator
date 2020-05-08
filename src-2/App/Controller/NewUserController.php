@@ -18,10 +18,10 @@ final class NewUserController
     public static function register(): void
     {
         if (self::isPageSafeToLoadScripts()) {
-            add_action('admin_enqueue_scripts', array(self::class, 'registerScripts'));
+            add_action('admin_enqueue_scripts', [self::class, 'registerScripts']);
         }
 
-        add_action('wp_ajax_lorem_user_generator_fetch_random_data', array(self::class, 'fetchRandomData'));
+        add_action('wp_ajax_lorem_user_generator_fetch_random_data', [self::class, 'fetchRandomData']);
     }
 
     public static function registerScripts(): void
