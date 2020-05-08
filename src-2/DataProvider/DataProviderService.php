@@ -1,6 +1,6 @@
 <?php
 
-namespace LoremUserGenerator\App;
+namespace LoremUserGenerator\DataProvider;
 
 use LoremUserGenerator\App\Http\Response\ErrorHttpResponse;
 use LoremUserGenerator\App\Http\Response\FailedHttpResponse;

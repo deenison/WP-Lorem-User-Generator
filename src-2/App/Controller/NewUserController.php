@@ -3,11 +3,9 @@
 namespace LoremUserGenerator\App\Controller;
 
 use LoremUserGenerator\App\Asset\AssetEnqueuer;
-use LoremUserGenerator\App\DataProviderService;
+use LoremUserGenerator\App\DataProvider\AppDataProviderService;
 use LoremUserGenerator\App\Http\Response\HttpResponseDispatcher;
 use LoremUserGenerator\App\Nonce\NewUserNonceService;
-use LoremUserGenerator\Http\HttpClientService;
-use LoremUserGenerator\LoremUserGeneratorFacade;
 
 final class NewUserController
 {
@@ -46,12 +44,7 @@ final class NewUserController
             HttpResponseDispatcher::dispatchFailedResponse('Please, refresh your page and try again.');
         }
 
-        $httpClient = (new HttpClientService())->getHttpClient();
-        $app = new LoremUserGeneratorFacade($httpClient);
-
-        $dataProviderService = new DataProviderService($app);
-
-        $httpResponse = $dataProviderService->fetchRandomUser();
+        $httpResponse = (new AppDataProviderService())->fetchRandomUser();
 
         HttpResponseDispatcher::dispatch($httpResponse);
     }
