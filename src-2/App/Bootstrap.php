@@ -30,9 +30,4 @@ final class Bootstrap
             [NewUserController::class, 'render']
         );
     }
-
-    public static function registerSettings(): void
-    {
-        var_dump('registerSettings');
-    }
 }

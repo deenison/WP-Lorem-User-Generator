@@ -3,6 +3,8 @@
 namespace LoremUserGenerator\DataProvider\Provider\RandomUserMe;
 
 use LoremUserGenerator\DataProvider\Provider\DataProviderGatewayInterface;
+use LoremUserGenerator\DataProvider\Provider\RandomUserMe\Filter\RandomUserMeFilters;
+use LoremUserGenerator\DataProvider\Provider\RandomUserMe\Filter\RandomUserMeFiltersBuilder;
 use LoremUserGenerator\User\UserEntity;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestInterface;
@@ -17,16 +19,30 @@ final class RandomUserMeGateway implements DataProviderGatewayInterface
         $this->httpClient = $httpClient;
     }
 
-    public function fetchRandomUser(): UserEntity
+    public function fetchRandomUser(array $filters = []): UserEntity
     {
-        $httpRequest = self::buildHttpRequest();
+        $filters = self::buildFiltersFromArray($filters);
+
+        $httpRequest = self::buildHttpRequest($filters);
         $httpResponse = $this->httpClient->sendRequest($httpRequest);
 
         return RandomUserMeHttpResponseParser::parseHttpResponse($httpResponse);
     }
 
-    private static function buildHttpRequest(): RequestInterface
+    private static function buildFiltersFromArray(array $filtersAsArray): RandomUserMeFilters
     {
-        return (new RandomUserMeHttpRequestBuilder())->build();
+        $filtersEntityBuilder = RandomUserMeFilters::builder();
+
+        $gender = $filtersAsArray['gender'] ?? '';
+        if (!empty($gender)) {
+            $filtersEntityBuilder->withGender($gender);
+        }
+
+        return $filtersEntityBuilder->build();
+    }
+
+    private static function buildHttpRequest(RandomUserMeFilters $filters): RequestInterface
+    {
+        return (new RandomUserMeHttpRequestBuilder($filters))->build();
     }
 }

@@ -20,10 +20,10 @@ final class DataProviderService
         $this->app = $app;
     }
 
-    public function fetchRandomUser(): HttpResponse
+    public function fetchRandomUser(array $filters = []): HttpResponse
     {
         try {
-            $user = $this->app->fetchUserWithRandomData();
+            $user = $this->app->fetchUserWithRandomData($filters);
         } catch (ClientExceptionInterface $exception) {
             return new FailedHttpResponse($exception->getMessage());
         } catch (DataProviderException | \Throwable $exception) {

@@ -16,9 +16,10 @@ final class LoremUserGeneratorFacade
         $this->httpClient = $httpClient;
     }
 
-    public function fetchUserWithRandomData(): UserEntity
+    public function fetchUserWithRandomData(array $filters): UserEntity
     {
         $gateway = new RandomUserMeGateway($this->httpClient);
-        return $gateway->fetchRandomUser();
+
+        return $gateway->fetchRandomUser($filters);
     }
 }

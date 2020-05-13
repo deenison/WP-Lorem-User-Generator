@@ -17,9 +17,9 @@ final class AppDataProviderService
         $this->loadDataProviderService();
     }
 
-    public function fetchRandomUser(): HttpResponse
+    public function fetchRandomUser(array $filters = []): HttpResponse
     {
-        return $this->dataProviderService->fetchRandomUser();
+        return $this->dataProviderService->fetchRandomUser($filters);
     }
 
     private function loadDataProviderService(): void
