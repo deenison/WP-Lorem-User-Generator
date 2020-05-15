@@ -1,6 +1,6 @@
 <?php
 
-namespace LoremUserGenerator\App\Controller;
+namespace LoremUserGenerator\App\Section\AddMultipleUsers;
 
 use LoremUserGenerator\App\Asset\AssetEnqueuer;
 use LoremUserGenerator\App\DataProvider\AppDataProviderService;
@@ -9,7 +9,7 @@ use LoremUserGenerator\App\Http\Response\HttpResponseDispatcher;
 use LoremUserGenerator\App\Nonce\NewUsersNonceService;
 use LoremUserGenerator\App\Template\TemplateRenderer;
 
-final class NewUsersController
+final class AddMultipleUsersController
 {
     private const NEW_USER_PAGE_IDENTIFIER = 'user-new.php';
 
