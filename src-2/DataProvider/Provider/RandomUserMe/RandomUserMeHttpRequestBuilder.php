@@ -37,6 +37,11 @@ final class RandomUserMeHttpRequestBuilder implements HttpRequestBuilderInterfac
             'inc' => 'name,login,email',
         ];
 
+        $results = $filters->getResults();
+        if (!empty($results)) {
+            $filtersAsArray['results'] = $results;
+        }
+
         $gender = $filters->getGender();
         if (!empty($gender)) {
             $filtersAsArray['gender'] = $gender;

@@ -8,19 +8,19 @@ final class SuccessfulHttpResponse implements HttpResponse
 {
     private const RESPONSE_STATUS = 'success';
 
-    /** @var UserEntity */
-    private $user;
+    /** @var UserEntity[] */
+    private $users;
 
-    public function __construct(UserEntity $user)
+    public function __construct(array $users)
     {
-        $this->user = $user;
+        $this->users = $users;
     }
 
     public function jsonSerialize()
     {
         return [
             'status' => self::RESPONSE_STATUS,
-            'data' => $this->user,
+            'data' => $this->users,
         ];
     }
 }

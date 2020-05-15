@@ -6,5 +6,5 @@ use LoremUserGenerator\User\UserEntity;
 
 interface DataProviderGatewayInterface
 {
-    public function fetchRandomUser(array $filters = []): UserEntity;
+    public function fetchRandomUser(array $options = []): array;
 }

@@ -3,6 +3,7 @@
 namespace LoremUserGenerator\App;
 
 use LoremUserGenerator\App\Controller\NewUserController;
+use LoremUserGenerator\App\Controller\NewUsersController;
 use LoremUserGenerator\App\Controller\SettingsController;
 
 final class Bootstrap
@@ -16,6 +17,7 @@ final class Bootstrap
 //        add_action('admin_menu', array(self::class, 'registerAdminMenus'));
 //        add_action('admin_init', array(self::class, 'registerSettings'));
         SettingsController::register();
+        NewUsersController::register();
         NewUserController::register();
     }
 

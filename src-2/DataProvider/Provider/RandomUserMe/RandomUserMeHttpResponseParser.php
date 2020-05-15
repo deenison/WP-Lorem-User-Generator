@@ -12,7 +12,7 @@ final class RandomUserMeHttpResponseParser
     {
     }
 
-    public static function parseHttpResponse(ResponseInterface $httpResponse): UserEntity
+    public static function parseHttpResponse(ResponseInterface $httpResponse): array
     {
         $response = json_decode($httpResponse->getBody()->getContents(), true);
 
@@ -21,10 +21,20 @@ final class RandomUserMeHttpResponseParser
             throw new DataProviderException($errorMessage);
         }
 
-        $response = $response['results'][0] ?? [];
-        self::isNotEmptyOrCry($response, 'Invalid response');
+        $results = $response['results'] ?? [];
+        return self::parseUsersFromResponseResults($results);
+//        self::isNotEmptyOrCry($response, 'Invalid response');
+    }
 
-        return self::buildUserFromDecodedResponse($response);
+    private static function parseUsersFromResponseResults(array $responseResults): array
+    {
+        $usersRawData = [];
+
+        foreach ($responseResults as $randomUserRawData) {
+            $usersRawData[] = self::buildUserFromDecodedResponse($randomUserRawData);
+        }
+
+        return $usersRawData;
     }
 
     private static function buildUserFromDecodedResponse(array $decodedResponse): UserEntity

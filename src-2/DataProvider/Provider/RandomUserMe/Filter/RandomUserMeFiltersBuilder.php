@@ -9,6 +9,9 @@ final class RandomUserMeFiltersBuilder
     /** @var callable */
     private $attributeSetter;
 
+    /** @var int */
+    private $results;
+
     /** @var string */
     private $gender;
 
@@ -16,6 +19,12 @@ final class RandomUserMeFiltersBuilder
     {
         $this->instance = $instance;
         $this->attributeSetter = $attributeSetter;
+    }
+
+    public function withResults(int $results): self
+    {
+        $this->results = $results;
+        return $this;
     }
 
     public function withGender(string $gender): self
@@ -26,6 +35,7 @@ final class RandomUserMeFiltersBuilder
 
     public function build(): RandomUserMeFilters
     {
+        $this->setProperty('results', $this->results);
         $this->setProperty('gender', $this->gender);
 
         unset($this->attributeSetter);

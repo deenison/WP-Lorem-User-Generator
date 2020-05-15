@@ -3,7 +3,6 @@
 namespace LoremUserGenerator;
 
 use LoremUserGenerator\DataProvider\Provider\RandomUserMe\RandomUserMeGateway;
-use LoremUserGenerator\User\UserEntity;
 use Psr\Http\Client\ClientInterface;
 
 final class LoremUserGeneratorFacade
@@ -16,7 +15,7 @@ final class LoremUserGeneratorFacade
         $this->httpClient = $httpClient;
     }
 
-    public function fetchUserWithRandomData(array $filters): UserEntity
+    public function fetchUserWithRandomData(array $filters): array
     {
         $gateway = new RandomUserMeGateway($this->httpClient);
 

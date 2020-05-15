@@ -19,19 +19,24 @@ final class RandomUserMeGateway implements DataProviderGatewayInterface
         $this->httpClient = $httpClient;
     }
 
-    public function fetchRandomUser(array $filters = []): UserEntity
+    public function fetchRandomUser(array $options = []): array
     {
-        $filters = self::buildFiltersFromArray($filters);
+        $options = self::buildOptionsFromArray($options);
 
-        $httpRequest = self::buildHttpRequest($filters);
+        $httpRequest = self::buildHttpRequest($options);
         $httpResponse = $this->httpClient->sendRequest($httpRequest);
 
         return RandomUserMeHttpResponseParser::parseHttpResponse($httpResponse);
     }
 
-    private static function buildFiltersFromArray(array $filtersAsArray): RandomUserMeFilters
+    private static function buildOptionsFromArray(array $filtersAsArray): RandomUserMeFilters
     {
         $filtersEntityBuilder = RandomUserMeFilters::builder();
+
+        $results = $filtersAsArray['results'] ?? 0;
+        if (is_numeric($results) && $results > 1) {
+            $filtersEntityBuilder->withResults($results);
+        }
 
         $gender = $filtersAsArray['gender'] ?? '';
         if (!empty($gender)) {
