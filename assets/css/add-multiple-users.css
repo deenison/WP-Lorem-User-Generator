@@ -1,0 +1,36 @@
+#lorem-user-generator form {
+  padding: 15px 0;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+#lorem-user-generator .table-wrapper {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+#lorem-user-generator table {
+  width: 100%;
+  margin-bottom: 1rem;
+  color: #212529;
+  border-collapse: collapse;
+}
+
+#lorem-user-generator table th {
+  border-bottom: 2px solid #dee2e6;
+  padding: .3rem;
+  border-top: 1px solid #dee2e6;
+  text-align: left;
+}
+
+#lorem-user-generator table td {
+  padding: .75rem;
+  vertical-align: top;
+  border-top: 1px solid #dee2e6;
+}
+
+#lorem-user-generator table pre {
+  margin: 0;
+}

@@ -37,7 +37,7 @@
 
   function handleRequestResponse(response) {
     const fetchStatus = response.status || '';
-
+    console.log(response);
     if (fetchStatus === 'success') {
       return handleSuccessfulResponse(response.data);
     }

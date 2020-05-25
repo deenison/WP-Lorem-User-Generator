@@ -21,6 +21,7 @@ final class AddMultipleUsersController
     {
         if (AddMultipleUsersPageValidator::isCurrentPage()) {
             add_action('admin_enqueue_scripts', [self::class, 'registerScripts']);
+            add_action('admin_enqueue_scripts', [self::class, 'registerStyleScripts']);
         }
 
         add_action('wp_ajax_lorem_user_generator_fetch_multiple_random_data', [self::class, 'fetchRandomData']);
@@ -58,6 +59,11 @@ final class AddMultipleUsersController
                 'nonce' => NewUsersNonceService::generateNonce(),
             ]
         );
+    }
+
+    public static function registerStyleScripts(): void
+    {
+        AssetEnqueuer::enqueueStylesheetFile(self::NEW_USER_PAGE_IDENTIFIER, 'add-multiple-users');
     }
 
     public static function fetchRandomData(): void
