@@ -1,7 +1,13 @@
+.s-border-top {
+  border-top: 1px solid #CCC;
+}
+
+.s-border-bottom {
+  border-bottom: 1px solid #CCC;
+}
+
 #lorem-user-generator form {
   padding: 15px 0;
-  border-top: 1px solid #ccc;
-  border-bottom: 1px solid #ccc;
 }
 
 #lorem-user-generator .table-wrapper {

@@ -18,19 +18,19 @@ class SuccessfulHttpResponseTest extends TestCase
             ->withPassword('we have to go back')
             ->build();
 
-        $successfulHttpResponse = new SuccessfulHttpResponse($user);
+        $successfulHttpResponse = new SuccessfulHttpResponse([$user]);
         $successfulHttpResponseAsJson = json_encode($successfulHttpResponse);
 
         $expectedSuccessfulHttpResponseAsJson = <<<JSON
 {
     "status": "success",
-    "data": {
+    "data": [{
         "first_name": "Jack",
         "last_name": "Sheppard",
         "email": "jacksheppard@sbx.local",
         "username": "jack",
         "password": "we have to go back"
-    }
+    }]
 }
 JSON;
 

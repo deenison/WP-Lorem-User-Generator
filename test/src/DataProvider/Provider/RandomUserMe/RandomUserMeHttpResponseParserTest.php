@@ -21,7 +21,7 @@ class RandomUserMeHttpResponseParserTest extends TestCase
         );
         $httpResponse = new FakeHttpResponse($httpStatusCode = 200, $httpResponseBody);
 
-        $user = RandomUserMeHttpResponseParser::parseHttpResponse($httpResponse);
+        [$user] = RandomUserMeHttpResponseParser::parseHttpResponse($httpResponse);
 
         Assert::assertEquals('Jack', $user->getFirstName());
         Assert::assertEquals('Bauer', $user->getLastName());
@@ -56,7 +56,7 @@ class RandomUserMeHttpResponseParserTest extends TestCase
         yield 'email'      => [$emailMissing     , 'Invalid `email`'];
         yield 'username'   => [$usernameMissing  , 'Invalid `username`'];
         yield 'password'   => [$passwordMissing  , 'Invalid `password`'];
-        yield 'empty'      => [''                , 'Invalid response'];
+        yield 'empty'      => [''                , 'No response received'];
     }
 
     /** @dataProvider provideUnexpectedResponses */

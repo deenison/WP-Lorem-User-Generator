@@ -26,7 +26,7 @@ class RandomUserMeGatewayTest extends TestCase
 
         $gateway = new RandomUserMeGateway($httpClient);
 
-        $user = $gateway->fetchRandomUser();
+        [$user] = $gateway->fetchRandomUser();
 
         Assert::assertEquals('Jack', $user->getFirstName());
         Assert::assertEquals('Bauer', $user->getLastName());

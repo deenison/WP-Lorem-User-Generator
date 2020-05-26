@@ -15,6 +15,9 @@ final class RandomUserMeHttpResponseParser
     public static function parseHttpResponse(ResponseInterface $httpResponse): array
     {
         $response = json_decode($httpResponse->getBody()->getContents(), true);
+        if (empty($response)) {
+            throw new DataProviderException('No response received');
+        }
 
         $errorMessage = $response['error'] ?? '';
         if (!empty($errorMessage)) {
@@ -23,7 +26,6 @@ final class RandomUserMeHttpResponseParser
 
         $results = $response['results'] ?? [];
         return self::parseUsersFromResponseResults($results);
-//        self::isNotEmptyOrCry($response, 'Invalid response');
     }
 
     private static function parseUsersFromResponseResults(array $responseResults): array

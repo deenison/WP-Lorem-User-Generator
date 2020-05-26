@@ -3,7 +3,7 @@
 <main id="lorem-user-generator" class="wrap">
     <h1>Add New Multiple Users</h1>
     <p>Generate & add new users with random data and add them to this site.</p>
-    <form>
+    <form id="form-fetch" class="s-border-top">
         <fieldset>
             <h3 class="legend">Preferences</h3>
             <div>
@@ -23,22 +23,27 @@
         <button type="submit" class="button button-primary">Generate</button>
     </form>
     <div class="table-wrapper">
-        <table>
-            <thead>
-                <tr>
-                    <th style="width: 150px;">First Name</th>
-                    <th style="width: 150px;">Last Name</th>
-                    <th style="width: 225px;">Email</th>
-                    <th style="width: 125px;">Username</th>
-                    <th style="width: 125px;">Password</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td colspan="5">Please, adjust your parameters first.</td>
-                </tr>
-            </tbody>
-        </table>
+        <form id="form-save-users">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 150px;">First Name</th>
+                        <th style="width: 150px;">Last Name</th>
+                        <th style="width: 225px;">Email</th>
+                        <th style="width: 125px;">Username</th>
+                        <th style="width: 125px;">Password</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="5">Please, adjust your parameters first.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+    <div>
+        <button type="submit" class="button button-primary" form="form-save-users">Add them all</button>
     </div>
 </main>
 

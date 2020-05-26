@@ -4,10 +4,16 @@ namespace LoremUserGenerator\App\Section\AddMultipleUsers;
 
 use LoremUserGenerator\App\Asset\AssetEnqueuer;
 use LoremUserGenerator\App\DataProvider\AppDataProviderService;
+use LoremUserGenerator\App\Http\Response\BaseHttpResponse;
 use LoremUserGenerator\App\Http\Response\HttpResponseDispatcher;
 use LoremUserGenerator\App\Nonce\NewUsersNonceService;
+use LoremUserGenerator\App\Persistence\WordpressPersistenceService;
 use LoremUserGenerator\App\Section\AddMultipleUsers\RequestData\AddMultipleUsersRequestDataRetrieverService;
 use LoremUserGenerator\App\Template\TemplateRenderer;
+use LoremUserGenerator\App\User\WordpressUser;
+use LoremUserGenerator\App\User\WordpressUserRepository;
+use LoremUserGenerator\Persistence\PersistenceServiceException;
+use LoremUserGenerator\User\UserEntity;
 
 final class AddMultipleUsersController
 {
@@ -25,6 +31,7 @@ final class AddMultipleUsersController
         }
 
         add_action('wp_ajax_lorem_user_generator_fetch_multiple_random_data', [self::class, 'fetchRandomData']);
+        add_action('wp_ajax_lorem_user_generator_save_multiple_random_data', [self::class, 'saveRandomData']);
 
         add_action('admin_menu', [self::class, 'registerSidebarMenuItem']);
     }
@@ -84,10 +91,51 @@ final class AddMultipleUsersController
         HttpResponseDispatcher::dispatch($httpResponse);
     }
 
+    public static function saveRandomData(): void
+    {
+        $persistenceService = new WordpressPersistenceService();
+        $repository = new WordpressUserRepository($persistenceService);
+
+        $users = self::retrieveUsersFromPost();
+        try {
+            foreach ($users as $user) {
+                $repository->store($user);
+            }
+        } catch (PersistenceServiceException $exception) {
+            HttpResponseDispatcher::dispatchFailedResponse($exception->getMessage());
+        }
+
+        $httpResponse = new BaseHttpResponse('success', []);
+        HttpResponseDispatcher::dispatch($httpResponse);
+    }
+
     private static function buildRequestOptionsArrayOrCry(): array
     {
         return [
             'results' => AddMultipleUsersRequestDataRetrieverService::retrieveQuantity(),
         ];
+    }
+
+    private static function retrieveUsersFromPost(): array
+    {
+        $usersFromRequest = AddMultipleUsersRequestDataRetrieverService::retrieveUsersFromPost();
+        return array_map(
+            function ($userFromRequest) {
+                $user = self::buildUserEntityFromRequestArray($userFromRequest);
+                return WordpressUser::fromUser($user);
+            },
+            $usersFromRequest
+        );
+    }
+
+    private static function buildUserEntityFromRequestArray(array $userFromRequest): UserEntity
+    {
+        return UserEntity::builder()
+            ->withFirstName($userFromRequest['first_name'])
+            ->withLastName($userFromRequest['last_name'])
+            ->withEmail($userFromRequest['email'])
+            ->withUsername($userFromRequest['username'])
+            ->withPassword($userFromRequest['password'])
+            ->build();
     }
 }

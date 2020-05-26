@@ -2,7 +2,7 @@
 
 namespace LoremUserGenerator\User;
 
-final class UserEntity implements \JsonSerializable
+final class UserEntity implements UserEntityInterface
 {
     /** @var string */
     private $firstName;
@@ -54,7 +54,7 @@ final class UserEntity implements \JsonSerializable
         return $this->password;
     }
 
-    public function jsonSerialize()
+    public function toArray(): array
     {
         return [
             'first_name' => $this->firstName,
@@ -63,5 +63,10 @@ final class UserEntity implements \JsonSerializable
             'username' => $this->username,
             'password' => $this->password,
         ];
+    }
+
+    public function jsonSerialize()
+    {
+        return $this->toArray();
     }
 }

@@ -14,7 +14,7 @@ class RandomUserMeHttpRequestBuilderTest extends TestCase
         $httpRequest = $requestBuilder->build();
 
         Assert::assertEquals('GET', $httpRequest->getMethod());
-        Assert::assertEquals('https://randomuser.me/api/?inc=name,login,email', (string)$httpRequest->getUri());
+        Assert::assertEquals('https://randomuser.me/api?inc=name%2Clogin%2Cemail&results=1', (string)$httpRequest->getUri());
         Assert::assertEmpty((string)$httpRequest->getBody());
     }
 }
