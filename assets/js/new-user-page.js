@@ -39,7 +39,7 @@
     const fetchStatus = response.status || '';
     console.log(response);
     if (fetchStatus === 'success') {
-      return handleSuccessfulResponse(response.data);
+      return handleSuccessfulResponse(response.data[0] || {});
     }
 
     return handleFailedResponse(response.error);
