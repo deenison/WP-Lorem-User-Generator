@@ -1,6 +1,6 @@
 <?php
 
-namespace LoremUserGenerator\App\Controller;
+namespace LoremUserGenerator\App\Modules\AddSingleUser;
 
 use LoremUserGenerator\App\Asset\AssetEnqueuer;
 use LoremUserGenerator\App\DataProvider\AppDataProviderService;

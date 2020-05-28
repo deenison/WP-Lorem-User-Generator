@@ -1,6 +1,6 @@
 <?php
 
-namespace LoremUserGenerator\App\Controller;
+namespace LoremUserGenerator\App\Modules\Settings;
 
 use LoremUserGenerator\App\Template\TemplateRenderer;
 use LoremUserGenerator\App\UserRole\UserRoleService;

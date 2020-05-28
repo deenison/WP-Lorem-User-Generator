@@ -2,9 +2,9 @@
 
 namespace LoremUserGenerator\App;
 
-use LoremUserGenerator\App\Controller\NewUserController;
-use LoremUserGenerator\App\Controller\SettingsController;
 use LoremUserGenerator\App\Modules\AddMultipleUsers\AddMultipleUsersController;
+use LoremUserGenerator\App\Modules\AddSingleUser\NewUserController;
+use LoremUserGenerator\App\Modules\Settings\SettingsController;
 
 final class Bootstrap
 {
