@@ -1,5 +1,3 @@
-<?php
-?>
 <main id="lorem-user-generator" class="wrap">
     <h1>Add New Multiple Users</h1>
     <p>Generate & add new users with random data and add them to this site.</p>
@@ -22,6 +20,9 @@
         <br/>
         <button type="submit" class="button button-primary">Generate</button>
     </form>
+    <div id="output-console-wrapper" style="display: none;">
+        <pre><strong>CONSOLE:</strong> <span id="output-console-content"></span></pre>
+    </div>
     <div class="table-wrapper">
         <form id="form-save-users">
             <table>

@@ -40,3 +40,13 @@
 #lorem-user-generator table pre {
   margin: 0;
 }
+
+#lorem-user-generator #output-console-wrapper {
+  background-color: #CCC;
+  border-radius: 4px;
+}
+
+#lorem-user-generator #output-console-wrapper pre {
+  margin: 0;
+  padding: 4px 8px;
+}
