@@ -129,6 +129,11 @@
             nonce: $context.nonce,
             users: Array.from(data),
           },
+          success: function (response) {
+            if (response.status === 'success' && response.redirect_url) {
+              window.location.replace(response.redirect_url);
+            }
+          },
         });
 
         return false;

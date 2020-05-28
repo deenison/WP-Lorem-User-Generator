@@ -6,6 +6,7 @@ use LoremUserGenerator\App\Asset\AssetEnqueuer;
 use LoremUserGenerator\App\DataProvider\AppDataProviderService;
 use LoremUserGenerator\App\Http\Response\BaseHttpResponse;
 use LoremUserGenerator\App\Http\Response\HttpResponseDispatcher;
+use LoremUserGenerator\App\Modules\AddMultipleUsers\Http\Response\SuccessfullySaveHttpResponse;
 use LoremUserGenerator\App\Modules\AddMultipleUsers\RequestData\AddMultipleUsersRequestDataRetrieverService;
 use LoremUserGenerator\App\Nonce\NewUsersNonceService;
 use LoremUserGenerator\App\Persistence\WordpressPersistenceService;
@@ -105,7 +106,7 @@ final class AddMultipleUsersController
             HttpResponseDispatcher::dispatchFailedResponse($exception->getMessage());
         }
 
-        $httpResponse = new BaseHttpResponse('success', []);
+        $httpResponse = new SuccessfullySaveHttpResponse();
         HttpResponseDispatcher::dispatch($httpResponse);
     }
 
