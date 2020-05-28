@@ -5,6 +5,7 @@ namespace LoremUserGenerator\App;
 use LoremUserGenerator\App\Modules\AddMultipleUsers\AddMultipleUsersController;
 use LoremUserGenerator\App\Modules\AddSingleUser\NewUserController;
 use LoremUserGenerator\App\Modules\Settings\SettingsController;
+use LoremUserGenerator\App\Modules\Users\UsersController;
 
 final class Bootstrap
 {
@@ -19,6 +20,7 @@ final class Bootstrap
         SettingsController::register();
         AddMultipleUsersController::register();
         NewUserController::register();
+        UsersController::register();
     }
 
     public static function registerAdminMenus(): void

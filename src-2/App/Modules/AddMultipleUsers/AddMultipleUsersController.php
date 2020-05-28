@@ -4,7 +4,6 @@ namespace LoremUserGenerator\App\Modules\AddMultipleUsers;
 
 use LoremUserGenerator\App\Asset\AssetEnqueuer;
 use LoremUserGenerator\App\DataProvider\AppDataProviderService;
-use LoremUserGenerator\App\Http\Response\BaseHttpResponse;
 use LoremUserGenerator\App\Http\Response\HttpResponseDispatcher;
 use LoremUserGenerator\App\Modules\AddMultipleUsers\Http\Response\SuccessfullySaveHttpResponse;
 use LoremUserGenerator\App\Modules\AddMultipleUsers\RequestData\AddMultipleUsersRequestDataRetrieverService;
