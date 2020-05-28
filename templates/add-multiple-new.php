@@ -43,7 +43,12 @@
         </form>
     </div>
     <div>
-        <button type="submit" class="button button-primary" form="form-save-users">Add them all</button>
+        <button
+            type="submit"
+            class="button button-primary disabled"
+            form="form-save-users"
+            disabled
+        >Add them all</button>
     </div>
 </main>
 

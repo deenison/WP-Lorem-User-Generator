@@ -1,5 +1,20 @@
 ;(function(window, document, $, $context) {
 
+  const saveButton = {
+    selector: 'main button[type="submit"][form="form-save-users"]',
+    getElement: function () { return $(this.selector) },
+    enable: function () {
+      this.getElement()
+        .attr('disabled', null)
+        .removeClass('disabled');
+    },
+    disable: function () {
+      this.getElement()
+        .attr('disabled', 'disabled')
+        .addClass('disabled');
+    },
+  };
+
   $('#form-save-users').on(
     'submit',
     function (event) {
@@ -32,9 +47,11 @@
     const tbody = $('#lorem-user-generator table tbody');
     tbody.html('');
 
-    Array
-      .from(results)
-      .forEach(result => renderResultHtmlRowForResult(result, tbody));
+    const resultsAsArray = Array.from(results);
+    if (resultsAsArray.length > 0) {
+      resultsAsArray.forEach(result => renderResultHtmlRowForResult(result, tbody));
+      saveButton.enable();
+    }
   };
 
   const handleErrorActionResponse = errorMessage => outputMessageOnTable(errorMessage);
@@ -73,7 +90,10 @@
     event.preventDefault();
 
     fetchRandomData(
-      () => $('#lorem-user-generator table tbody').html('<tr><td colspan="6">Loading...</td></tr>'),
+      () => {
+        $('#lorem-user-generator table tbody').html('<tr><td colspan="6">Loading...</td></tr>');
+        saveButton.disable();
+      },
       handleActionResponse
     );
 

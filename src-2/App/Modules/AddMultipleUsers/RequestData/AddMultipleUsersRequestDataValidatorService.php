@@ -1,6 +1,6 @@
 <?php
 
-namespace LoremUserGenerator\App\Section\AddMultipleUsers\RequestData;
+namespace LoremUserGenerator\App\Modules\AddMultipleUsers\RequestData;
 
 final class AddMultipleUsersRequestDataValidatorService
 {

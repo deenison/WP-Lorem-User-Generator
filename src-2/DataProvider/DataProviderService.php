@@ -23,7 +23,7 @@ final class DataProviderService
     public function fetchRandomUser(array $filters = []): HttpResponse
     {
         try {
-            $user = $this->app->fetchUserWithRandomData($filters);
+            $users = $this->app->fetchUserWithRandomData($filters);
         } catch (ClientExceptionInterface $exception) {
             return new FailedHttpResponse($exception->getMessage());
         } catch (DataProviderException | \Throwable $exception) {
@@ -33,6 +33,10 @@ final class DataProviderService
             return new ErrorHttpResponse($errorMessage);
         }
 
-        return new SuccessfulHttpResponse($user);
+        if (count($users) > 0) {
+            return new SuccessfulHttpResponse($users);
+        }
+
+        return new ErrorHttpResponse('It seems no data were generated. Please, try again later.');
     }
 }

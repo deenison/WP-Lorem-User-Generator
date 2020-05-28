@@ -4,7 +4,7 @@ namespace LoremUserGenerator\App;
 
 use LoremUserGenerator\App\Controller\NewUserController;
 use LoremUserGenerator\App\Controller\SettingsController;
-use LoremUserGenerator\App\Section\AddMultipleUsers\AddMultipleUsersController;
+use LoremUserGenerator\App\Modules\AddMultipleUsers\AddMultipleUsersController;
 
 final class Bootstrap
 {

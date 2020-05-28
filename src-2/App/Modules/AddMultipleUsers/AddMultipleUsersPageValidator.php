@@ -1,6 +1,6 @@
 <?php
 
-namespace LoremUserGenerator\App\Section\AddMultipleUsers;
+namespace LoremUserGenerator\App\Modules\AddMultipleUsers;
 
 final class AddMultipleUsersPageValidator
 {
