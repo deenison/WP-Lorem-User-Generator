@@ -20,7 +20,10 @@ final class UsersController
             'lorem-user-generator',
             'LoremUserGenerator',
             [
-                'add_multiple_new_url' => admin_url('users.php?page=lorem-user-generator-add-multiple-users'),
+                'anchor' => [
+                    'href' => admin_url('users.php?page=lorem-user-generator-add-multiple-users'),
+                    'label' => 'Add Multiple New',
+                ],
             ]
         );
     }
