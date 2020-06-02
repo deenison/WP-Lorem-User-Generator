@@ -19,6 +19,10 @@
         </fieldset>
         <br/>
         <button type="submit" class="button button-primary">Generate</button>
+        <div id="notes-wrapper">
+            <p>You can generate up to 25 users per request.</p>
+            <p>Passwords are displayed only once. Write them down!</p>
+        </div>
     </form>
     <div id="output-console-wrapper" style="display: none;">
         <pre><strong>CONSOLE:</strong> <span id="output-console-content"></span></pre>
