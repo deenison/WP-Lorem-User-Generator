@@ -10,14 +10,18 @@ final class WordpressUser implements UserEntityInterface
     /** @var UserEntity */
     private $user;
 
-    private function __construct(UserEntity $user)
+    /** @var string */
+    private $role;
+
+    private function __construct(UserEntity $user, string $userRole)
     {
         $this->user = $user;
+        $this->role = $userRole;
     }
 
-    public static function fromUser(UserEntity $user): self
+    public static function fromUser(UserEntity $user, string $userRole): self
     {
-        return new self($user);
+        return new self($user, $userRole);
     }
 
     public function getFirstName(): string
@@ -45,6 +49,11 @@ final class WordpressUser implements UserEntityInterface
         return $this->user->getPassword();
     }
 
+    public function getRole(): string
+    {
+        return $this->role;
+    }
+
     public function toArray(): array
     {
         return [
@@ -53,6 +62,7 @@ final class WordpressUser implements UserEntityInterface
             'user_email' => $this->user->getEmail(),
             'user_login' => $this->user->getUsername(),
             'user_pass' => $this->user->getPassword(),
+            'role' => $this->role,
         ];
     }
 

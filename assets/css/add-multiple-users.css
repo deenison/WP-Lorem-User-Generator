@@ -6,6 +6,10 @@
   border-bottom: 1px solid #CCC;
 }
 
+#lorem-user-generator .input-wrapper + .input-wrapper {
+  margin-top: 15px;
+}
+
 #lorem-user-generator label {
   font-weight: bold;
   margin-right: 15px;
@@ -45,7 +49,7 @@
 }
 
 #lorem-user-generator table td {
-  padding: .75rem;
+  padding: .75rem 0.25rem;
   vertical-align: top;
   border-top: 1px solid #dee2e6;
 }
@@ -62,4 +66,8 @@
 #lorem-user-generator #output-console-wrapper pre {
   margin: 0;
   padding: 4px 8px;
+}
+
+#lorem-user-generator .u-text-center {
+  text-align: center;
 }

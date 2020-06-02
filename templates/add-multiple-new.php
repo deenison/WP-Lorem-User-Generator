@@ -4,7 +4,7 @@
     <form id="form-fetch" class="s-border-top">
         <fieldset>
             <h3 class="legend">Preferences</h3>
-            <div>
+            <div class="input-wrapper">
                 <label for="pref-quantity">Quantity</label>
                 <input
                     id="pref-quantity"
@@ -15,6 +15,14 @@
                     step="1"
                     value="1"
                 />
+            </div>
+            <div class="input-wrapper">
+                <label for="pref-gender">Gender</label>
+                <select id="pref-gender" name="gender">
+                    <option value="">Both</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
             </div>
         </fieldset>
         <br/>
@@ -32,6 +40,7 @@
             <table>
                 <thead>
                     <tr>
+                        <th class="u-text-center" style="width: 25px;">#</th>
                         <th style="width: 150px;">First Name</th>
                         <th style="width: 150px;">Last Name</th>
                         <th style="width: 225px;">Email</th>
@@ -41,10 +50,18 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td colspan="5">Please, adjust your parameters first.</td>
+                        <td colspan="6">Please, adjust your parameters first.</td>
                     </tr>
                 </tbody>
             </table>
+            <div class="input-wrapper">
+                <label for="pref-role">Role</label>
+                <select id="pref-role" name="role">
+                    <?php foreach ($usersRoles as $userRoleSlug => $userRoleTitle): ?>
+                        <option value="<?php echo $userRoleSlug; ?>" <?php echo $userRoleSlug === $defaultUserRole ? 'selected' : ''; ?>><?php echo $userRoleTitle; ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
         </form>
     </div>
     <div>

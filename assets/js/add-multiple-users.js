@@ -43,10 +43,11 @@
 
   const $usersOutputTable = {
     selector: 'main#lorem-user-generator form#form-save-users table',
-    pushUserData: function (user) {
+    pushUserData: function (user, userIndex) {
       const tbody = $('tbody', $(this.selector));
 
       const rowAsArray = [
+        '<td class="u-text-center">'+ userIndex +'</td>',
         '<td>'+ user.first_name +'<input type="hidden" name="first_name[]" value="'+ user.first_name +'" /></td>',
         '<td>'+ user.last_name +'<input type="hidden" name="last_name[]" value="'+ user.last_name +'" /></td>',
         '<td>'+ user.email +'<input type="hidden" name="email[]" value="'+ user.email +'" /></td>',
@@ -74,6 +75,7 @@
         action: 'lorem_user_generator_fetch_multiple_random_data',
         nonce: $context.nonce,
         qty: $('#lorem-user-generator form input[name="quantity"]').val(),
+        gender: $('#lorem-user-generator form select[name="gender"]').val(),
       };
 
       sendHttpRequest(
@@ -110,7 +112,7 @@
 
       const resultsAsArray = Array.from(results);
       if (resultsAsArray.length > 0) {
-        resultsAsArray.forEach(user => $usersOutputTable.pushUserData(user));
+        resultsAsArray.forEach((user, userIndex) => $usersOutputTable.pushUserData(user, userIndex + 1));
         $saveButton.enable();
       }
     },
@@ -146,6 +148,7 @@
           action: 'lorem_user_generator_save_multiple_random_data',
           nonce: $context.nonce,
           users: this.getFormData(),
+          role: $('#lorem-user-generator form select[name="role"]').val(),
         },
         () => {
           $fetchButton.disable();

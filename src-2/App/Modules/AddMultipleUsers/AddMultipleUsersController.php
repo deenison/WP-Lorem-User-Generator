@@ -12,6 +12,7 @@ use LoremUserGenerator\App\Persistence\WordpressPersistenceService;
 use LoremUserGenerator\App\Template\TemplateRenderer;
 use LoremUserGenerator\App\User\WordpressUser;
 use LoremUserGenerator\App\User\WordpressUserRepository;
+use LoremUserGenerator\App\UserRole\UserRoleService;
 use LoremUserGenerator\Persistence\PersistenceServiceException;
 use LoremUserGenerator\User\UserEntity;
 
@@ -51,9 +52,12 @@ final class AddMultipleUsersController
 
     public static function renderPageTemplate(): void
     {
-        TemplateRenderer::render(
-            'add-multiple-new'
-        );
+        $context = [
+            'defaultUserRole' => get_option('default_role'),
+            'usersRoles' => UserRoleService::retrieveAllAvailableUserRoles(),
+        ];
+
+        TemplateRenderer::render('add-multiple-new', $context);
     }
 
     public static function registerScripts(): void
@@ -96,7 +100,9 @@ final class AddMultipleUsersController
         $persistenceService = new WordpressPersistenceService();
         $repository = new WordpressUserRepository($persistenceService);
 
-        $users = self::retrieveUsersFromPost();
+        $userRole = AddMultipleUsersRequestDataRetrieverService::retrieveRoleFromPost();
+
+        $users = self::retrieveUsersFromPost($userRole);
         try {
             foreach ($users as $user) {
                 $repository->store($user);
@@ -113,16 +119,17 @@ final class AddMultipleUsersController
     {
         return [
             'results' => AddMultipleUsersRequestDataRetrieverService::retrieveQuantity(),
+            'gender' => AddMultipleUsersRequestDataRetrieverService::retrieveGender(),
         ];
     }
 
-    private static function retrieveUsersFromPost(): array
+    private static function retrieveUsersFromPost(string $userRole): array
     {
         $usersFromRequest = AddMultipleUsersRequestDataRetrieverService::retrieveUsersFromPost();
         return array_map(
-            function ($userFromRequest) {
+            function ($userFromRequest) use ($userRole) {
                 $user = self::buildUserEntityFromRequestArray($userFromRequest);
-                return WordpressUser::fromUser($user);
+                return WordpressUser::fromUser($user, $userRole);
             },
             $usersFromRequest
         );

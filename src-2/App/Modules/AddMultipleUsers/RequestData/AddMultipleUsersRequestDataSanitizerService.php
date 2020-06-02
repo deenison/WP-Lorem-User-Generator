@@ -12,4 +12,9 @@ final class AddMultipleUsersRequestDataSanitizerService
     {
         return (int)$quantity;
     }
+
+    public static function sanitizeString(string $subject): string
+    {
+        return filter_var($subject, FILTER_SANITIZE_STRING);
+    }
 }

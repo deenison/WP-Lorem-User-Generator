@@ -5,6 +5,8 @@ namespace LoremUserGenerator\App\Modules\AddMultipleUsers\RequestData;
 final class AddMultipleUsersRequestDataRetrieverService
 {
     private const QUANTITY_REQUEST_KEY = 'qty';
+    private const GENDER_REQUEST_KEY = 'gender';
+    private const ROLE_REQUEST_KEY = 'role';
 
     private function __construct()
     {
@@ -16,6 +18,18 @@ final class AddMultipleUsersRequestDataRetrieverService
         $sanitizedQuantity = AddMultipleUsersRequestDataSanitizerService::sanitizeQuantity($unsanitizedQuantity);
         AddMultipleUsersRequestDataValidatorService::isQuantityValidOrCry($sanitizedQuantity);
         return $sanitizedQuantity;
+    }
+
+    public static function retrieveGender(): string
+    {
+        $unsanitizedGender = $_GET[self::GENDER_REQUEST_KEY] ?? '';
+        $sanitizedGender = AddMultipleUsersRequestDataSanitizerService::sanitizeString($unsanitizedGender);
+
+        if (!empty($sanitizedGender)) {
+            AddMultipleUsersRequestDataValidatorService::isGenderValidOrCry($sanitizedGender);
+        }
+
+        return $sanitizedGender;
     }
 
     public static function retrieveUsersFromPost(): array
@@ -43,5 +57,17 @@ final class AddMultipleUsersRequestDataRetrieverService
             },
             $usersFromRequest
         );
+    }
+
+    public static function retrieveRoleFromPost(): string
+    {
+        $unsanitizedRole = $_POST[self::ROLE_REQUEST_KEY] ?? '';
+        $sanitizedRole = AddMultipleUsersRequestDataSanitizerService::sanitizeString($unsanitizedRole);
+
+        if (!empty($sanitizedRole)) {
+            AddMultipleUsersRequestDataValidatorService::isRoleValidOrCry($sanitizedRole);
+        }
+
+        return $sanitizedRole;
     }
 }
