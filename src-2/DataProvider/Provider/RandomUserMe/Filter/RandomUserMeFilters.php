@@ -10,6 +10,9 @@ final class RandomUserMeFilters
     /** @var string|null */
     private $gender;
 
+    /** @var string[] */
+    private $nationalities;
+
     private function __construct()
     {
     }
@@ -32,5 +35,10 @@ final class RandomUserMeFilters
     public function getGender(): ?string
     {
         return $this->gender;
+    }
+
+    public function getNationalities(): array
+    {
+        return $this->nationalities ?? [];
     }
 }

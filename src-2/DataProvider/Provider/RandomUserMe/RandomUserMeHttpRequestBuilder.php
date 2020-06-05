@@ -47,6 +47,11 @@ final class RandomUserMeHttpRequestBuilder implements HttpRequestBuilderInterfac
             $filtersAsArray['gender'] = $gender;
         }
 
+        $nationalities = $filters->getNationalities();
+        if (!empty($nationalities)) {
+            $filtersAsArray['nat'] = strtolower(implode(',', $nationalities));
+        }
+
         return http_build_query($filtersAsArray);
     }
 }

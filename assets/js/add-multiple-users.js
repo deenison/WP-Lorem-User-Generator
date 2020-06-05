@@ -76,6 +76,7 @@
         nonce: $context.nonce,
         qty: $('#lorem-user-generator form input[name="quantity"]').val(),
         gender: $('#lorem-user-generator form select[name="gender"]').val(),
+        nationalities: $('#lorem-user-generator form select[name="nationalities"]').val(),
       };
 
       sendHttpRequest(

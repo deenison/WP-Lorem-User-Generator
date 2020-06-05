@@ -15,6 +15,9 @@ final class RandomUserMeFiltersBuilder
     /** @var string */
     private $gender;
 
+    /** @var string[] */
+    private $nationalities;
+
     public function __construct(RandomUserMeFilters $instance, callable $attributeSetter)
     {
         $this->instance = $instance;
@@ -33,10 +36,17 @@ final class RandomUserMeFiltersBuilder
         return $this;
     }
 
+    public function withNationalities(array $nationalities): self
+    {
+        $this->nationalities = $nationalities;
+        return $this;
+    }
+
     public function build(): RandomUserMeFilters
     {
         $this->setProperty('results', $this->results);
         $this->setProperty('gender', $this->gender);
+        $this->setProperty('nationalities', $this->nationalities);
 
         unset($this->attributeSetter);
 

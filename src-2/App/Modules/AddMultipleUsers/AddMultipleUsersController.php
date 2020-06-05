@@ -117,9 +117,12 @@ final class AddMultipleUsersController
 
     private static function buildRequestOptionsArrayOrCry(): array
     {
+        $nationalities = $_GET['nationalities'] ?? [];
+
         return [
             'results' => AddMultipleUsersRequestDataRetrieverService::retrieveQuantity(),
             'gender' => AddMultipleUsersRequestDataRetrieverService::retrieveGender(),
+            'nationalities' => $nationalities,
         ];
     }
 

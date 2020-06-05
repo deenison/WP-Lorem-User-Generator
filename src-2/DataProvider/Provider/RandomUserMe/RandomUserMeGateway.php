@@ -43,6 +43,18 @@ final class RandomUserMeGateway implements DataProviderGatewayInterface
             $filtersEntityBuilder->withGender($gender);
         }
 
+        $supportedNationalities = ['AU', 'BR', 'CA', 'CH', 'DE', 'DK', 'ES', 'FI', 'FR', 'GB', 'IE', 'IR', 'NO', 'NL', 'NZ', 'TR', 'US'];
+        $nationalities = array_filter(
+            $filtersAsArray['nationalities'] ?? [],
+            function ($countryAbbr) use ($supportedNationalities) {
+                return in_array(strtoupper($countryAbbr), $supportedNationalities);
+            }
+        );
+
+        if (!empty($nationalities)) {
+            $filtersEntityBuilder->withNationalities($nationalities);
+        }
+
         return $filtersEntityBuilder->build();
     }
 
