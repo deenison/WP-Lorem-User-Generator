@@ -5,6 +5,7 @@ namespace LoremUserGenerator\App\Modules\AddMultipleUsers;
 use LoremUserGenerator\App\Asset\AssetEnqueuer;
 use LoremUserGenerator\App\DataProvider\AppDataProviderService;
 use LoremUserGenerator\App\Http\Response\HttpResponseDispatcher;
+use LoremUserGenerator\App\Modules\AddMultipleUsers\Http\Request\FetchUsers\FetchUsersRequestPayload;
 use LoremUserGenerator\App\Modules\AddMultipleUsers\Http\Response\SuccessfullySaveHttpResponse;
 use LoremUserGenerator\App\Modules\AddMultipleUsers\RequestData\AddMultipleUsersRequestDataRetrieverService;
 use LoremUserGenerator\App\Nonce\NewUsersNonceService;
@@ -84,14 +85,14 @@ final class AddMultipleUsersController
         }
 
         try {
-            $options = self::buildRequestOptionsArrayOrCry();
+            $requestPayload = FetchUsersRequestPayload::fromRequest();
         } catch (\InvalidArgumentException $exception) {
             HttpResponseDispatcher::dispatchFailedResponse($exception->getMessage());
         } catch (\Throwable $exception) {
             HttpResponseDispatcher::dispatchErrorResponse($exception->getMessage());
         }
 
-        $httpResponse = (new AppDataProviderService())->fetchRandomUser($options);
+        $httpResponse = (new AppDataProviderService())->fetchRandomUser($requestPayload->toArray());
         HttpResponseDispatcher::dispatch($httpResponse);
     }
 
@@ -113,17 +114,6 @@ final class AddMultipleUsersController
 
         $httpResponse = new SuccessfullySaveHttpResponse();
         HttpResponseDispatcher::dispatch($httpResponse);
-    }
-
-    private static function buildRequestOptionsArrayOrCry(): array
-    {
-        $nationalities = $_GET['nationalities'] ?? [];
-
-        return [
-            'results' => AddMultipleUsersRequestDataRetrieverService::retrieveQuantity(),
-            'gender' => AddMultipleUsersRequestDataRetrieverService::retrieveGender(),
-            'nationalities' => $nationalities,
-        ];
     }
 
     private static function retrieveUsersFromPost(string $userRole): array
