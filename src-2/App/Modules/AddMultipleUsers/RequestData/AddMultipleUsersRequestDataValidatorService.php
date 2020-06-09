@@ -10,20 +10,6 @@ final class AddMultipleUsersRequestDataValidatorService
     {
     }
 
-    public static function isQuantityValidOrCry(int $quantity): void
-    {
-        if ($quantity < 0 || $quantity > 25) {
-            throw new \InvalidArgumentException('Please, provide a `quantity` which is between 1 and 25.');
-        }
-    }
-
-    public static function isGenderValidOrCry(string $gender): void
-    {
-        if (!in_array($gender, ['male', 'female'])) {
-            throw new \InvalidArgumentException('Unsupported gender: `'. $gender .'`');
-        }
-    }
-
     public static function isRoleValidOrCry(string $role): void
     {
         $usersRoles = UserRoleService::retrieveAllAvailableUserRoles();

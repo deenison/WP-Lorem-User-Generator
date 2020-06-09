@@ -4,7 +4,7 @@ namespace LoremUserGenerator\App\Modules\AddMultipleUsers\Http\Response;
 
 use LoremUserGenerator\App\Http\Response\HttpResponse;
 
-final class SuccessfullySaveHttpResponse implements HttpResponse
+final class SuccessfulSaveHttpResponse implements HttpResponse
 {
     public function jsonSerialize()
     {
