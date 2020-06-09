@@ -1,3 +1,5 @@
+<?php if (!defined('ABSPATH')) exit; ?>
+
 <main id="lorem-user-generator" class="wrap">
     <h1>Add New Multiple Users</h1>
     <p>Generate & add new users with random data and add them to this site.</p>
