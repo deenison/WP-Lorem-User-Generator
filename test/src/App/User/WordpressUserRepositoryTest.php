@@ -50,6 +50,6 @@ class WordpressUserRepositoryTest extends TestCase
             ->withPassword('jacob')
             ->build();
 
-        return WordpressUser::fromUser($user);
+        return WordpressUser::fromUser($user, $role = 'guest');
     }
 }

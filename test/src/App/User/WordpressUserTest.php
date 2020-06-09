@@ -19,7 +19,7 @@ class WordpressUserTest extends TestCase
             ->withPassword('jacob')
             ->build();
 
-        $wpUser = WordpressUser::fromUser($user);
+        $wpUser = WordpressUser::fromUser($user, $role = 'guest');
 
         Assert::assertEquals('Jack', $wpUser->getFirstName());
         Assert::assertEquals('Sheppard', $wpUser->getLastName());
@@ -38,7 +38,7 @@ class WordpressUserTest extends TestCase
             ->withPassword('jacob')
             ->build();
 
-        $wpUser = WordpressUser::fromUser($user);
+        $wpUser = WordpressUser::fromUser($user, $role = 'guest');
 
         $wpUserAsArray = $wpUser->toArray();
 
@@ -48,6 +48,7 @@ class WordpressUserTest extends TestCase
             'user_email' => 'jack.sheppard@oceanic.sbx',
             'user_login' => 'jack',
             'user_pass' => 'jacob',
+            'role' => 'guest',
         ];
 
         Assert::assertEquals($expectedArray, $wpUserAsArray);
