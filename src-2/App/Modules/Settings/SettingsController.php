@@ -2,6 +2,8 @@
 
 namespace LoremUserGenerator\App\Modules\Settings;
 
+if (!defined('ABSPATH')) exit;
+
 use LoremUserGenerator\App\Template\TemplateRenderer;
 use LoremUserGenerator\App\UserRole\UserRoleService;
 use LoremUserGenerator\Environment;

@@ -2,6 +2,8 @@
 
 namespace LoremUserGenerator\App\User;
 
+if (!defined('ABSPATH')) exit;
+
 use LoremUserGenerator\Persistence\PersistenceServiceException;
 use LoremUserGenerator\Persistence\PersistenceServiceInterface;
 

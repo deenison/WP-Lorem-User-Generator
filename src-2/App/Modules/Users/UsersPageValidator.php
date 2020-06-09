@@ -2,6 +2,8 @@
 
 namespace LoremUserGenerator\App\Modules\Users;
 
+if (!defined('ABSPATH')) exit;
+
 final class UsersPageValidator
 {
     private const TARGET_PAGE = 'users.php';

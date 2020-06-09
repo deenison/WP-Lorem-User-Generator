@@ -2,6 +2,8 @@
 
 namespace LoremUserGenerator\App\Nonce;
 
+if (!defined('ABSPATH')) exit;
+
 final class NewUsersNonceService
 {
     private const ACTION_NAME = 'lorem_user_generator_fetch_multiple_random_data';

@@ -2,15 +2,12 @@
 
 namespace LoremUserGenerator\App\Modules\AddMultipleUsers\RequestData;
 
+if (!defined('ABSPATH')) exit;
+
 final class AddMultipleUsersRequestDataSanitizerService
 {
     private function __construct()
     {
-    }
-
-    public static function sanitizeQuantity(string $quantity): int
-    {
-        return (int)$quantity;
     }
 
     public static function sanitizeString(string $subject): string

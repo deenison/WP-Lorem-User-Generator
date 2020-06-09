@@ -2,6 +2,8 @@
 
 namespace LoremUserGenerator\App;
 
+if (!defined('ABSPATH')) exit;
+
 use LoremUserGenerator\App\Modules\AddMultipleUsers\AddMultipleUsersController;
 use LoremUserGenerator\App\Modules\AddSingleUser\NewUserController;
 use LoremUserGenerator\App\Modules\Settings\SettingsController;

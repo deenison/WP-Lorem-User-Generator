@@ -9,7 +9,7 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 use LoremUserGenerator\Http\Client\Guzzle\GuzzleHttpClientAdapter;
 use PHPUnit\Framework\Assert;
-use PHPUnit\Framework\TestCase;
+use Test\LoremUserGenerator\TestCase;
 
 class GuzzleHttpClientAdapterTest extends TestCase
 {

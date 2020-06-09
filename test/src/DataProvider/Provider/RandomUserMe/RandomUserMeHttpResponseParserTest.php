@@ -5,8 +5,8 @@ namespace Test\LoremUserGenerator\DataProvider\Provider\RandomUserMe;
 use LoremUserGenerator\DataProvider\Exception\DataProviderException;
 use LoremUserGenerator\DataProvider\Provider\RandomUserMe\RandomUserMeHttpResponseParser;
 use PHPUnit\Framework\Assert;
-use PHPUnit\Framework\TestCase;
 use Test\LoremUserGenerator\Http\Response\FakeHttpResponse;
+use Test\LoremUserGenerator\TestCase;
 
 class RandomUserMeHttpResponseParserTest extends TestCase
 {

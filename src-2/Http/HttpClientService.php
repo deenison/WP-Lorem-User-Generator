@@ -2,6 +2,8 @@
 
 namespace LoremUserGenerator\Http;
 
+if (!defined('ABSPATH')) exit;
+
 use LoremUserGenerator\Http\Client\Guzzle\GuzzleHttpClientBuilder;
 use LoremUserGenerator\Http\Client\HttpClientBuilderInterface;
 use Psr\Http\Client\ClientInterface;

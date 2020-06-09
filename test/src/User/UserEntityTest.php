@@ -4,7 +4,7 @@ namespace Test\LoremUserGenerator\User;
 
 use LoremUserGenerator\User\UserEntity;
 use PHPUnit\Framework\Assert;
-use PHPUnit\Framework\TestCase;
+use Test\LoremUserGenerator\TestCase;
 
 class UserEntityTest extends TestCase
 {

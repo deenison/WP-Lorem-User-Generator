@@ -2,6 +2,8 @@
 
 namespace LoremUserGenerator;
 
+if (!defined('ABSPATH')) exit;
+
 use LoremUserGenerator\DataProvider\Provider\RandomUserMe\RandomUserMeGateway;
 use Psr\Http\Client\ClientInterface;
 

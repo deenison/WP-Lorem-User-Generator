@@ -2,6 +2,8 @@
 
 namespace LoremUserGenerator\App\DataProvider;
 
+if (!defined('ABSPATH')) exit;
+
 use LoremUserGenerator\App\Http\Response\HttpResponse;
 use LoremUserGenerator\DataProvider\DataProviderService;
 use LoremUserGenerator\Http\HttpClientService;

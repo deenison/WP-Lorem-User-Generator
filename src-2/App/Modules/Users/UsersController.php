@@ -2,6 +2,8 @@
 
 namespace LoremUserGenerator\App\Modules\Users;
 
+if (!defined('ABSPATH')) exit;
+
 use LoremUserGenerator\App\Asset\AssetEnqueuer;
 
 final class UsersController

@@ -2,6 +2,8 @@
 
 namespace LoremUserGenerator\DataProvider\Provider\RandomUserMe;
 
+if (!defined('ABSPATH')) exit;
+
 use GuzzleHttp\Psr7\Request;
 use LoremUserGenerator\DataProvider\Provider\RandomUserMe\Filter\RandomUserMeFilters;
 use LoremUserGenerator\Http\Request\HttpRequestBuilderInterface;

@@ -2,6 +2,8 @@
 
 namespace LoremUserGenerator\App\Modules\AddMultipleUsers\Http\Request\FetchUsers;
 
+if (!defined('ABSPATH')) exit;
+
 final class FetchUsersRequestPayload
 {
     /** @var int */

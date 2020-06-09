@@ -2,6 +2,8 @@
 
 namespace LoremUserGenerator\App\Modules\AddMultipleUsers\Http\Response;
 
+if (!defined('ABSPATH')) exit;
+
 use LoremUserGenerator\App\Http\Response\HttpResponse;
 
 final class SuccessfulSaveHttpResponse implements HttpResponse

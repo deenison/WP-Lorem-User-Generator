@@ -2,6 +2,8 @@
 
 namespace LoremUserGenerator\App\Modules\AddSingleUser;
 
+if (!defined('ABSPATH')) exit;
+
 use LoremUserGenerator\App\Asset\AssetEnqueuer;
 use LoremUserGenerator\App\DataProvider\AppDataProviderService;
 use LoremUserGenerator\App\Http\Response\HttpResponseDispatcher;

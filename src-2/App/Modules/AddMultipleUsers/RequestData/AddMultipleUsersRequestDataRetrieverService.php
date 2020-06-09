@@ -2,6 +2,8 @@
 
 namespace LoremUserGenerator\App\Modules\AddMultipleUsers\RequestData;
 
+if (!defined('ABSPATH')) exit;
+
 final class AddMultipleUsersRequestDataRetrieverService
 {
     private const ROLE_REQUEST_KEY = 'role';

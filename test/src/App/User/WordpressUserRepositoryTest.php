@@ -7,8 +7,8 @@ use LoremUserGenerator\App\User\WordpressUserRepository;
 use LoremUserGenerator\Persistence\PersistenceServiceException;
 use LoremUserGenerator\User\UserEntity;
 use PHPUnit\Framework\Assert;
-use PHPUnit\Framework\TestCase;
 use Test\LoremUserGenerator\App\Persistence\FakePersistenceService;
+use Test\LoremUserGenerator\TestCase;
 
 class WordpressUserRepositoryTest extends TestCase
 {

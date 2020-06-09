@@ -5,9 +5,9 @@ namespace Test\LoremUserGenerator\Http;
 use LoremUserGenerator\Http\Client\Guzzle\GuzzleHttpClientAdapter;
 use LoremUserGenerator\Http\HttpClientService;
 use PHPUnit\Framework\Assert;
-use PHPUnit\Framework\TestCase;
 use Test\LoremUserGenerator\Http\Client\Fake\FakeHttpClient;
 use Test\LoremUserGenerator\Http\Client\Fake\FakeHttpClientBuilder;
+use Test\LoremUserGenerator\TestCase;
 
 class HttpClientServiceTest extends TestCase
 {

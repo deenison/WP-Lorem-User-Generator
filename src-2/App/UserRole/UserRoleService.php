@@ -2,6 +2,8 @@
 
 namespace LoremUserGenerator\App\UserRole;
 
+if (!defined('ABSPATH')) exit;
+
 final class UserRoleService
 {
     private function __construct()

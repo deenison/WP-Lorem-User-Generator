@@ -2,6 +2,8 @@
 
 namespace LoremUserGenerator\App\Http\Response;
 
+if (!defined('ABSPATH')) exit;
+
 use LoremUserGenerator\User\UserEntity;
 
 final class HttpResponseDispatcher

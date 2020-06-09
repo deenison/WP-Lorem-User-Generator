@@ -2,6 +2,8 @@
 
 namespace LoremUserGenerator\App\Asset;
 
+if (!defined('ABSPATH')) exit;
+
 final class AssetEnqueuer
 {
     private function __construct()

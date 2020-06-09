@@ -2,6 +2,8 @@
 
 namespace LoremUserGenerator\App\Modules\AddMultipleUsers\RequestData;
 
+if (!defined('ABSPATH')) exit;
+
 use LoremUserGenerator\App\UserRole\UserRoleService;
 
 final class AddMultipleUsersRequestDataValidatorService

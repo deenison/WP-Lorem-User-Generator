@@ -2,7 +2,7 @@
 
 namespace LoremUserGenerator\DataProvider\Provider;
 
-use LoremUserGenerator\User\UserEntity;
+if (!defined('ABSPATH')) exit;
 
 interface DataProviderGatewayInterface
 {

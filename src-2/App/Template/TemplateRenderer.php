@@ -2,6 +2,8 @@
 
 namespace LoremUserGenerator\App\Template;
 
+if (!defined('ABSPATH')) exit;
+
 final class TemplateRenderer
 {
     private function __construct()

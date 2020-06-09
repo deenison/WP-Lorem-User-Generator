@@ -5,9 +5,9 @@ namespace Test\LoremUserGenerator\DataProvider\Provider\RandomUserMe;
 use LoremUserGenerator\DataProvider\Exception\DataProviderException;
 use LoremUserGenerator\DataProvider\Provider\RandomUserMe\RandomUserMeGateway;
 use PHPUnit\Framework\Assert;
-use PHPUnit\Framework\TestCase;
 use Test\LoremUserGenerator\Http\Client\Fake\FakeHttpClient;
 use Test\LoremUserGenerator\Http\Response\FakeHttpResponse;
+use Test\LoremUserGenerator\TestCase;
 
 class RandomUserMeGatewayTest extends TestCase
 {

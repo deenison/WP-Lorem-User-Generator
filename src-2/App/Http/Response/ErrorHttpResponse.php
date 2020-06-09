@@ -2,6 +2,8 @@
 
 namespace LoremUserGenerator\App\Http\Response;
 
+if (!defined('ABSPATH')) exit;
+
 final class ErrorHttpResponse implements HttpResponse
 {
     private const RESPONSE_STATUS = 'error';

@@ -2,6 +2,8 @@
 
 namespace LoremUserGenerator\DataProvider\Provider\RandomUserMe\Filter;
 
+if (!defined('ABSPATH')) exit;
+
 final class RandomUserMeFiltersBuilder
 {
     /** @var RandomUserMeFilters */

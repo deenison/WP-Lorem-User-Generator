@@ -2,6 +2,8 @@
 
 namespace LoremUserGenerator\DataProvider\Provider\RandomUserMe;
 
+if (!defined('ABSPATH')) exit;
+
 use LoremUserGenerator\DataProvider\Exception\DataProviderException;
 use LoremUserGenerator\User\UserEntity;
 use Psr\Http\Message\ResponseInterface;

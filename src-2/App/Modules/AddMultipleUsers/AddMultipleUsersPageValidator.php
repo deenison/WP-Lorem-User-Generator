@@ -2,6 +2,8 @@
 
 namespace LoremUserGenerator\App\Modules\AddMultipleUsers;
 
+if (!defined('ABSPATH')) exit;
+
 final class AddMultipleUsersPageValidator
 {
     private const NEW_USERS_PAGE_NAME = 'users.php';

@@ -4,7 +4,7 @@ namespace Test\LoremUserGenerator\DataProvider\Provider\RandomUserMe;
 
 use LoremUserGenerator\DataProvider\Provider\RandomUserMe\RandomUserMeHttpRequestBuilder;
 use PHPUnit\Framework\Assert;
-use PHPUnit\Framework\TestCase;
+use Test\LoremUserGenerator\TestCase;
 
 class RandomUserMeHttpRequestBuilderTest extends TestCase
 {

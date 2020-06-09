@@ -2,6 +2,8 @@
 
 namespace LoremUserGenerator\Http\Client\Guzzle;
 
+if (!defined('ABSPATH')) exit;
+
 use GuzzleHttp\Client;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestInterface;

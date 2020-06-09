@@ -5,7 +5,7 @@ namespace Test\LoremUserGenerator\App\Http\Response;
 use LoremUserGenerator\App\Http\Response\SuccessfulHttpResponse;
 use LoremUserGenerator\User\UserEntity;
 use PHPUnit\Framework\Assert;
-use PHPUnit\Framework\TestCase;
+use Test\LoremUserGenerator\TestCase;
 
 class SuccessfulHttpResponseTest extends TestCase
 {

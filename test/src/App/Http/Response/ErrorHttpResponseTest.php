@@ -4,7 +4,7 @@ namespace Test\LoremUserGenerator\App\Http\Response;
 
 use LoremUserGenerator\App\Http\Response\ErrorHttpResponse;
 use PHPUnit\Framework\Assert;
-use PHPUnit\Framework\TestCase;
+use Test\LoremUserGenerator\TestCase;
 
 class ErrorHttpResponseTest extends TestCase
 {

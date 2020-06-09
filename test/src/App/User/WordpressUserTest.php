@@ -5,7 +5,7 @@ namespace Test\LoremUserGenerator\App\User;
 use LoremUserGenerator\App\User\WordpressUser;
 use LoremUserGenerator\User\UserEntity;
 use PHPUnit\Framework\Assert;
-use PHPUnit\Framework\TestCase;
+use Test\LoremUserGenerator\TestCase;
 
 class WordpressUserTest extends TestCase
 {

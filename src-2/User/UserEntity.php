@@ -2,6 +2,8 @@
 
 namespace LoremUserGenerator\User;
 
+if (!defined('ABSPATH')) exit;
+
 final class UserEntity implements UserEntityInterface
 {
     /** @var string */

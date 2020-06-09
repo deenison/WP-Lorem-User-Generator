@@ -2,6 +2,8 @@
 
 namespace LoremUserGenerator\App\User;
 
+if (!defined('ABSPATH')) exit;
+
 use LoremUserGenerator\User\UserEntity;
 use LoremUserGenerator\User\UserEntityInterface;
 

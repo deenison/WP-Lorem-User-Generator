@@ -2,6 +2,8 @@
 
 namespace LoremUserGenerator\App\Http\Response;
 
+if (!defined('ABSPATH')) exit;
+
 final class BaseHttpResponse implements HttpResponse
 {
     /** @var string */
