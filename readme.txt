@@ -1,0 +1,91 @@
+=== Lorem User Generator ===
+Contributors: deenison
+Tags: lorem, users, members, generator, user generator, random, dummy data
+Tested up to: 5.4.2
+Requires PHP: 7.1
+Stable tag: 2.0.0
+License: GPLv3
+License URI: https://www.gnu.org/licenses/gpl-3.0.html
+
+Like Lorem Ipsum, but for users. A straightforward way to add randomly generated users to your WordPress.
+
+
+== Description ==
+
+Lorem User Generator uses [randomuser.me](https://randomuser.me) API to generate as many random user data as you want to your WordPress for application testing.
+It's like Lorem Ipsum, but for users.
+
+
+== Installation ==
+
+1. Upload the `lorem-user-generator` folder to the `/wp-content/plugins` directory.
+2. Go to the `Plugins` menu in WordPress and activate the plugin.
+
+
+== Frequently Asked Questions ==
+
+= randomuser.me API you say? =
+
+Yes. [Random User Generator](https://randomuser.me) is a free open-source API for generating random user data.
+
+You can checkout their [GitHub repository](https://github.com/RandomAPI/Randomuser.me-Node).
+
+= Can I set up parameters for the randomized data? =
+
+Absolutely! Besides the `quantity` of users to be generated, you can specify their `gender` and `nationality`.
+
+
+== Screenshots ==
+
+1. The main plugin page
+2. The settings page
+
+
+== Changelog ==
+
+The format is based on [Keep a Changelog](http://keepachangelog.com) and this plugin adheres to [Semantic Versioning](http://semver.org).
+
+= [2.0.0] - @todo =
+
+Added:
+- Support for WordPress releases greater than v4.9;
+- Button to fill "New User"'s form inputs with random data;
+- "Add Multiple New" menu item link;
+- Button in "All Users" page that leads to "Add Multiple New" page.
+
+Changed:
+- Updated minimum PHP version to 7.1;
+- Refactored internal architecture;
+- Dropped plugins default options.
+
+= [1.3.0] - 2018-04-23 =
+
+Added:
+- Added a new Role filter so users can pick one WordPress User Role to be preselected on all generated users
+- Added option to add users automatically right after they were generated
+
+Changed:
+- Better AJAX errors handling
+- Minor code enhancements
+
+Fixed:
+- Fixed a couple of PHP warnings thrown under some envs running PHP >= 7.1
+
+= [1.2.0] - 2018-01-24 =
+
+Added:
+- Added Bulk Actions tool on the results table
+
+= [1.1.0] - 2017-12-29 =
+
+Added:
+- Added support for Portuguese (PT-BR) language
+
+= [1.0.1] - 2017-12-28 =
+
+Added:
+- Added screenshots to readme.txt
+
+= [1.0.0] - 2017-12-28 =
+
+- First release.
