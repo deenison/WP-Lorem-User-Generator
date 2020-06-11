@@ -43,7 +43,7 @@ final class NewUserController
     public static function fetchRandomData(): void
     {
         if (!NewUserNonceService::isNonceInRequestValid()) {
-            HttpResponseDispatcher::dispatchFailedResponse('Please, refresh your page and try again.');
+            HttpResponseDispatcher::dispatchFailedResponse(__('Please, refresh your page and try again.', 'lorem-user-generator'));
         }
 
         $httpResponse = (new AppDataProviderService())->fetchRandomUser();

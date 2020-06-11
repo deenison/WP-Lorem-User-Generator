@@ -44,8 +44,8 @@ final class AddMultipleUsersController
     {
         add_submenu_page(
             'users.php',
-            'Add Multiple New Users',
-            'Add Multiple New',
+            __('Add Multiple New Users', 'lorem-user-generator'),
+            __('Add Multiple New', 'lorem-user-generator'),
             'create_users',
             'lorem-user-generator-add-multiple-users',
             [self::class, 'renderPageTemplate'],
@@ -83,7 +83,7 @@ final class AddMultipleUsersController
     public static function fetchRandomData(): void
     {
         if (!NewUsersNonceService::isNonceInRequestValid()) {
-            HttpResponseDispatcher::dispatchFailedResponse('Please, refresh your page and try again.');
+            HttpResponseDispatcher::dispatchFailedResponse(__('Please, refresh your page and try again.', 'lorem-user-generator'));
         }
 
         try {

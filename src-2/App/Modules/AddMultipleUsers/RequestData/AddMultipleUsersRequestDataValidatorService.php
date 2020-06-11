@@ -16,7 +16,7 @@ final class AddMultipleUsersRequestDataValidatorService
     {
         $usersRoles = UserRoleService::retrieveAllAvailableUserRoles();
         if (!array_key_exists($role, $usersRoles)) {
-            throw new \InvalidArgumentException('User role not supported: `'. $role .'`');
+            throw new \InvalidArgumentException(sprintf(__('User role not supported: `%s`', 'lorem-user-generator'), $role));
         }
     }
 }

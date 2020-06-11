@@ -24,6 +24,6 @@ final class WordpressUserRepository
             return true;
         }
 
-        throw new PersistenceServiceException('Unexpected result: `'. json_encode($insertionResult) .'`');
+        throw new PersistenceServiceException(sprintf(__('Unexpected result: `%s`', 'lorem-user-generator'), json_encode($insertionResult)));
     }
 }

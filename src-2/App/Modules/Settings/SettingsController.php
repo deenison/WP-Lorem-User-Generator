@@ -23,7 +23,7 @@ final class SettingsController
             'lorem-user-generator:default_user_role',
             [
                 'type' => 'string',
-                'description' => 'User role that will be pre selected on the results table when generating dummy users data.',
+                'description' => __('User role that will be pre selected on the results table when generating dummy users data.', 'lorem-user-generator'),
                 'default' => get_option('default_role'),
             ]
         );
@@ -32,8 +32,8 @@ final class SettingsController
     public static function registerSidebarMenuItem(): void
     {
         add_options_page(
-            'Lorem User Generator Settings',
-            'Lorem User Generator',
+            __('Lorem User Generator Settings', 'lorem-user-generator'),
+            __('Lorem User Generator', 'lorem-user-generator'),
             'manage_options',
             'lorem-user-generator',
             [self::class, 'renderSettingsPageView']

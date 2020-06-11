@@ -24,7 +24,7 @@ final class UsersController
             [
                 'anchor' => [
                     'href' => admin_url('users.php?page=lorem-user-generator-add-multiple-users'),
-                    'label' => 'Add Multiple New',
+                    'label' => __('Add Multiple New', 'lorem-user-generator'),
                 ],
             ]
         );
