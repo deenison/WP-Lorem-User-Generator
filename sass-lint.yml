@@ -1,8 +1,0 @@
-options:
-  max-warnings: 5
-rules:
-  no-important: 0
-  indentation:
-    - 2
-    -
-      size: 2
