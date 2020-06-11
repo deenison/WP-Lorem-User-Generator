@@ -7,7 +7,6 @@ if (!defined('ABSPATH')) exit;
 use LoremUserGenerator\App\Asset\AssetEnqueuer;
 use LoremUserGenerator\App\DataProvider\AppDataProviderService;
 use LoremUserGenerator\App\Http\Response\HttpResponseDispatcher;
-use LoremUserGenerator\App\Nonce\NewUserNonceService;
 
 final class NewUserController
 {
@@ -34,7 +33,7 @@ final class NewUserController
             'LoremUserGenerator',
             [
                 'nonces' => [
-                    'fetch_random_data' => NewUserNonceService::generateNonce(),
+                    'fetch_random_data' => AddSingleUserNonceGenerator::generateNonce(),
                 ],
             ]
         );
@@ -42,7 +41,7 @@ final class NewUserController
 
     public static function fetchRandomData(): void
     {
-        if (!NewUserNonceService::isNonceInRequestValid()) {
+        if (!AddSingleUserNonceGenerator::isNonceInRequestValid()) {
             HttpResponseDispatcher::dispatchFailedResponse(__('Please, refresh your page and try again.', 'lorem-user-generator'));
         }
 

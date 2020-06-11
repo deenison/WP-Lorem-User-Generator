@@ -1,12 +1,12 @@
 <?php
 
-namespace LoremUserGenerator\App\Nonce;
+namespace LoremUserGenerator\App\Modules\AddMultipleUsers;
 
 if (!defined('ABSPATH')) exit;
 
-final class NewUserNonceService
+final class AddMultipleUsersNonceGenerator
 {
-    private const ACTION_NAME = 'lorem_user_generator_fetch_random_data';
+    private const ACTION_NAME = 'lorem_user_generator_fetch_multiple_random_data';
     private const NONCE_REQUEST_KEY = 'nonce';
 
     private function __construct()

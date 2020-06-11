@@ -10,7 +10,6 @@ use LoremUserGenerator\App\Http\Response\HttpResponseDispatcher;
 use LoremUserGenerator\App\Modules\AddMultipleUsers\Http\Request\FetchUsers\FetchUsersRequestPayload;
 use LoremUserGenerator\App\Modules\AddMultipleUsers\Http\Response\SuccessfulSaveHttpResponse;
 use LoremUserGenerator\App\Modules\AddMultipleUsers\RequestData\AddMultipleUsersRequestDataRetrieverService;
-use LoremUserGenerator\App\Nonce\NewUsersNonceService;
 use LoremUserGenerator\App\Persistence\WordpressPersistenceService;
 use LoremUserGenerator\App\Template\TemplateRenderer;
 use LoremUserGenerator\App\User\WordpressUser;
@@ -70,7 +69,7 @@ final class AddMultipleUsersController
             self::NEW_USER_PAGE_IDENTIFIER,
             'LoremUserGenerator',
             [
-                'nonce' => NewUsersNonceService::generateNonce(),
+                'nonce' => AddMultipleUsersNonceGenerator::generateNonce(),
             ]
         );
     }
@@ -82,7 +81,7 @@ final class AddMultipleUsersController
 
     public static function fetchRandomData(): void
     {
-        if (!NewUsersNonceService::isNonceInRequestValid()) {
+        if (!AddMultipleUsersNonceGenerator::isNonceInRequestValid()) {
             HttpResponseDispatcher::dispatchFailedResponse(__('Please, refresh your page and try again.', 'lorem-user-generator'));
         }
 
