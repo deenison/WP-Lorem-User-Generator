@@ -42,7 +42,7 @@
   };
 
   const $usersOutputTable = {
-    selector: 'main#lorem-user-generator form#form-save-users table',
+    selector: 'main#lorem-user-generator form#form-save-users #users-results',
     pushUserData: function (user, userIndex) {
       const tbody = $('tbody', $(this.selector));
 
@@ -95,6 +95,7 @@
       $console.setContent('Generating...');
       $console.display();
       $saveButton.disable();
+      disableButton($('#pref-role'));
     },
     _onSuccessfulHttpRequestResponse: function (response) {
       switch (response.status) {
@@ -107,8 +108,9 @@
     _onFetchSucceed: function (results) {
       $console.hide();
       $console.clear();
+      enableButton($('#pref-role'));
 
-      const tbody = $('#lorem-user-generator table tbody');
+      const tbody = $('#lorem-user-generator #users-results tbody');
       tbody.html('');
 
       const resultsAsArray = Array.from(results);

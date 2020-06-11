@@ -6,16 +6,12 @@
   border-bottom: 1px solid #CCC;
 }
 
-#lorem-user-generator .input-wrapper + .input-wrapper {
-  margin-top: 15px;
-}
-
 #lorem-user-generator label {
   font-weight: bold;
   margin-right: 15px;
 }
 
-#lorem-user-generator #notes-wrapper {
+#lorem-user-generator .notes-wrapper {
   margin-top: 10px;
   padding: 0 10px;
   border: 1px solid #CCC;
@@ -34,27 +30,29 @@
   -webkit-overflow-scrolling: touch;
 }
 
-#lorem-user-generator table {
+#lorem-user-generator #users-results {
   width: 100%;
   margin-bottom: 1rem;
   color: #212529;
   border-collapse: collapse;
+  border-radius: 4px;
+  background-color: #FFF;
 }
 
-#lorem-user-generator table th {
+#lorem-user-generator #users-results th {
   border-bottom: 2px solid #dee2e6;
   padding: .3rem;
   border-top: 1px solid #dee2e6;
   text-align: left;
 }
 
-#lorem-user-generator table td {
+#lorem-user-generator #users-results td {
   padding: .75rem 0.25rem;
   vertical-align: top;
   border-top: 1px solid #dee2e6;
 }
 
-#lorem-user-generator table pre {
+#lorem-user-generator #users-results pre {
   margin: 0;
 }
 
