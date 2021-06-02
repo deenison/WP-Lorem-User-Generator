@@ -2,7 +2,7 @@ version: "3.1"
 
 services:
   wordpress.lug.local:
-    image: wordpress:5.4.0-php7.2-apache
+    image: wordpress:5.7.2-php7.3-apache
     volumes:
       - ./wordpress:/var/www/html
       - ./src:/var/www/html/wp-content/plugins/lorem-user-generator
@@ -26,7 +26,6 @@ services:
       - "33306:3306"
     environment:
       - MYSQL_DATABASE=wordpress
-      - MYSQL_USER=root
       - MYSQL_ROOT_PASSWORD=secret
     volumes:
       - ./persistence/mysql:/var/lib/mysql
